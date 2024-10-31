@@ -15,7 +15,7 @@ use App\Http\Controllers\UbicacionesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 Route::resource('ubicaciones',UbicacionesController::class );
