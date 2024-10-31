@@ -22,6 +22,6 @@ class Equipo extends Model
         'vc_estado_equipo',	
         'vc_garantia_equipo',
         'i_fk_id_ubicacion',
-        'i_fk_id_persona'
+        'i_fk_id_empleado'
     ];
 }

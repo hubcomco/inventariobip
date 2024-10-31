@@ -11,7 +11,7 @@ class PaisesController extends Controller
      */
     public function index()
     {
-        //
+        dd('estoy en paises');
     }
 
     /**

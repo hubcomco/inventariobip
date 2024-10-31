@@ -13,7 +13,7 @@ class Historial extends Model
 
     protected $fillable =[
      'i_fk_id_equipo',	
-      'i_fk_id_persona',
+      'i_fk_id_empleado',
       'i_fk_id_ubicacion',
       'vc_observaciones',
       'd_fecha_observaciones'   

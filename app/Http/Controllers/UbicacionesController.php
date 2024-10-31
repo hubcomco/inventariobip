@@ -11,7 +11,7 @@ class UbicacionesController extends Controller
      */
     public function index()
     {
-        dd('estoy en el index');
+        dd('estoy en ubicaciones');
     }
 
     /**

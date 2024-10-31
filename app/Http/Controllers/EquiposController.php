@@ -11,7 +11,7 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        //
+        dd('estoy en equipos');
     }
 
     /**

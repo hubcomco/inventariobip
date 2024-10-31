@@ -11,7 +11,7 @@ class HistorialesController extends Controller
      */
     public function index()
     {
-        //
+        dd('estoy en historiales');
     }
 
     /**
