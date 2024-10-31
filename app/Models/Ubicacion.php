@@ -18,6 +18,6 @@ class Ubicacion extends Model
     ];
 
     public function pais(){
-        return $this->belongsTo(Pais::class);
+        return $this->belongsTo(Pais::class, 'i_fk_id_pais');
     }
 }

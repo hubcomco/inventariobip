@@ -14,4 +14,8 @@ class Pais extends Model
     protected $fillable = [
         'vc_pais'
     ];
+
+    public function ubicaciones(){
+        return $this->hasMany(Ubicacion::class, 'i_fk_id_pais');
+    }
 }

@@ -24,4 +24,16 @@ class Equipo extends Model
         'i_fk_id_ubicacion',
         'i_fk_id_empleado'
     ];
+
+    public function historial(){
+        return $this->hasMany(Historial::class, 'i_fk_id_equipo');
+    }
+
+    public function empleado(){
+        return $this->belongsTo(Empleado::class, 'i_fk_id_empleado');
+    }
+
+    public function ubicaciones(){
+        return $this->belongsTo(Ubicacion::class, 'i_fk_id_ubicacion');
+    }
 }
