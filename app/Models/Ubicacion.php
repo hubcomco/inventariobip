@@ -17,7 +17,7 @@ class Ubicacion extends Model
         'vc_ciudad'
     ];
 
-    public function pais(){
+    public function pais(){ /*Cada ubicacion pertenece a un pais*/
         return $this->belongsTo(Pais::class, 'i_fk_id_pais');
     }
 }

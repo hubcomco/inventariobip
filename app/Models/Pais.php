@@ -15,7 +15,8 @@ class Pais extends Model
         'vc_pais'
     ];
 
-    public function ubicaciones(){
+    public function ubicaciones(){ /*Un pais tiene muchas ubicaciones*/
         return $this->hasMany(Ubicacion::class, 'i_fk_id_pais');
     }
+     
 }

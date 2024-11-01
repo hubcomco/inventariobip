@@ -25,15 +25,15 @@ class Equipo extends Model
         'i_fk_id_empleado'
     ];
 
-    public function historial(){
+    public function historial(){ /*Cada equipo puede tener varios registros en el historial*/
         return $this->hasMany(Historial::class, 'i_fk_id_equipo');
     }
 
-    public function empleado(){
+    public function empleado(){ /*Cada equipo se asocia a un empleado*/
         return $this->belongsTo(Empleado::class, 'i_fk_id_empleado');
     }
 
-    public function ubicaciones(){
+    public function ubicaciones(){ /*Cada equipo se asocia a una ubicacion*/
         return $this->belongsTo(Ubicacion::class, 'i_fk_id_ubicacion');
     }
 }
