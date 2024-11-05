@@ -24,13 +24,23 @@
 </head>
 
 <body class="bg-gradient-primary">
-
-    <div class="container vh-100 d-flex align-items-center justify-content-center">
+     <!-- Lista para crear los cubos animados en el fondo de la-->
+    <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="container vh-100 d-flex align-items-center justify-content-center color-fondo1">
         <!-- Outer Row -->
         <div class="row form-login justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -73,23 +83,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="{{ url('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
     <!-- Custom scripts for all pages-->
     <script src=" {{ url('js/sb-admin-2.min.js')}}"></script>
-
 </body>
-
 </html>
