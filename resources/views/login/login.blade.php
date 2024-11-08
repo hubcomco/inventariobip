@@ -24,7 +24,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-     <!-- Lista para crear los cubos animados en el fondo de la-->
+     <!-- Lista para crear los cubos animados en el fondo-->
     <ul class="background">
         <li></li>
         <li></li>
@@ -51,30 +51,30 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4 bold">Recursos Humanos e Inventarios</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="{{ route('login') }}">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                name="email" id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Correo">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Contraseña">
+                                                name="password" id="exampleInputPassword" placeholder="Contraseña">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck" name="remember">
                                                 <label class="custom-control-label" for="customCheck">Recordar Contraseña</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block color-boton">
-                                            Ingresar
-                                        </a>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block color-boton"> Ingresar </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Olvidé mi contraseña</a>
                                     </div>
+                                    <!--Se comenta la clase para evitar que los usuarios se registren sin autorizacion-->
                                     <div class="text-center">
                                        <!-- <a class="small" href="register.html">Create an Account!</a> -->
                                     </div>
