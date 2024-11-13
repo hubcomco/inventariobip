@@ -18,8 +18,9 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="{{ url('css/admin.css')}}" rel="stylesheet">
     <link href="{{ url('css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    
 </head>
 
 <body id="page-top">
@@ -78,10 +79,13 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selecciona Cerrar Sesión para salir.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+                    </form>
                 </div>
             </div>
         </div>
