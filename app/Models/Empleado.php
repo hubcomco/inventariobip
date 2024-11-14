@@ -17,7 +17,12 @@ class Empleado extends Model
         'vc_cargo',	
         'vc_usuario_DA',
         'vc_email',
+        'vc_email_personal',
         'vc_telefono',
+        'vc_telefono_corporativo',
+        'vc_url_contrato',
+        'vc_url_examenes',
+        'vc_url_cedula',
         'i_fk_id_ubicacion'
     ];
 
