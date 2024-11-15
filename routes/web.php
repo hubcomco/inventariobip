@@ -24,7 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Ruta para registrar los empleados mediante el formulario
-Route::post('/empleados', [EmpleadosController::class, 'store'])->name('empleados.store');
+Route::post('/empleados/store', [EmpleadosController::class, 'store'])->name('empleados.store');
+Route::get('/empleados/editar/{id}', [EmpleadosController::class, 'edit'])->name('empleados.edit');
+Route::put('/empleados/actualizar', [EmpleadosController::class, 'update'])->name('empleados.update');
 
 //Ruta para mostrar el listado de empleados registrados
 Route::get('/dashboard', [EmpleadosController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

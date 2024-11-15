@@ -20,7 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ url('css/admin.css')}}" rel="stylesheet">
     <link href="{{ url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+
     
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+   
 </head>
 
 <body id="page-top">
@@ -101,13 +104,23 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ url('js/sb-admin-2.min.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ url('vendor/chart.js/Chart.min.js')}}""></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ url('js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{ url('js/demo/chart-pie-demo.js')}}"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
 </body>
+<script>
+    $(document).ready(function() {
+        $('.tabla-inventario').DataTable({
+            paging: true,          // Habilita la paginación
+            searching: true,       // Habilita la barra de búsqueda
+            ordering: true,        // Habilita la ordenación
+        });
+
+        $('#vc_telefono').on('change', function(){
+            alert($('#vc_telefono').val());
+        })
+
+
+    });
+</script>
 
 </html>

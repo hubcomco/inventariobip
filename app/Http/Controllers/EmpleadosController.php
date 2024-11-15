@@ -60,7 +60,7 @@ class EmpleadosController extends Controller
        Empleado::Create($validatedData);
 
        // Mensaje de confirmación al crear el empleado 
-       dd('Empleado creado exitosamente', $validatedData);
+       //dd('Empleado creado exitosamente', $validatedData);
 
        //Redirigir al crear el empleado mostrando un mensaje
        return back()->with('success', 'Empleado creado exitosamente');
@@ -86,8 +86,9 @@ class EmpleadosController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+       $empleado = Empleado::find($id);
+       return view('personal.edit', compact('empleado'));  
     }
 
     /**
