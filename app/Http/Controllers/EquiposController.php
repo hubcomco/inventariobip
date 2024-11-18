@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 
 class EquiposController extends Controller
@@ -11,7 +11,8 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        return "Estas en el Inventario de equipos";
+        $equipos = Equipo::all();
+        return view('personal.equipos', compact('equipos'));
     }
 
     /**
@@ -27,7 +28,22 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos del formulario antes de enviarlos a la base de datos
+        $validatedData = $request->validate([
+        'vc_nombre_equipo' => 'required|string|max:100',
+        't_componentes_generales' => 'nullable|string',
+        'vc_serial_equipo' => 'required|string|max:100|unique:equipos,vc_serial_equipo', // Serial único
+        'vc_marca' => 'required|string|max:100',
+        'vc_modelo' => 'nullable|string|max:100',
+        'd_fecha_compra' => 'nullable|date',
+        'dec_costo_equipo' => 'nullable|numeric|min:0',
+        'vc_estado_equipo' => 'required|string|max:100',
+        'vc_garantia_equipo' => 'nullable|string|max:100',
+        'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicaciones,i_pk_id', // Clave foránea debe existir
+        'i_fk_id_empleado' => 'nullable|integer|exists:empleados,i_pk_id', // Clave foránea debe existir
+        ]);
+        // Crear un nuevo equipo con los datos validados
+        $equipo = Equipo::create($validatedData);
     }
 
     /**
@@ -42,8 +58,9 @@ class EquiposController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $equipos = Equipo::find($id);
+        return view('personal.edit', compact('empleado'));
     }
 
     /**
