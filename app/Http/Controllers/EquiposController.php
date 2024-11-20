@@ -44,6 +44,9 @@ class EquiposController extends Controller
         ]);
         // Crear un nuevo equipo con los datos validados
         $equipo = Equipo::create($validatedData);
+
+        //Redirigir al crear el empleado mostrando un mensaje
+        return back()->with('success', 'Equipo creado exitosamente');
     }
 
     /**
@@ -60,7 +63,7 @@ class EquiposController extends Controller
     public function edit(string $id)
     {   
         $equipos = Equipo::find($id);
-        return view('personal.edit', compact('empleado'));
+        return view('equipos.edit', compact('equipos'));
     }
 
     /**

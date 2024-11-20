@@ -23,8 +23,16 @@
         </div>
     @endif
 
-    <div class="row">
-        <div class="col-md-7">
+    <!-- Botón para desplegar el formulario --> 
+    <div class="row"> 
+        <div class="col-md-12"> 
+            <button id="btnVerContenido" class="btn mb-4">Añadir Empleado</button>
+        </div> 
+    </div>
+    
+    <!--Se crea un id para el contenedor y un display para que desaparezca-->
+    <div class="row" id="verContenedor" style="display:none;">
+        <div class="col-md-11">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -75,7 +83,7 @@
                         <td><a href="{{ Storage::url($empleado->vc_url_contrato)}}">Ver Contrato</a></td>
                         <td><a href="{{ Storage::url($empleado->vc_url_examenes)}}">Ver Examenes</a></td>
                         <td><a href="{{ Storage::url($empleado->vc_url_cedula)}}">Ver Cedula</a></td>
-                        <td> <a href="{{ route('empleados.edit',['id'=>$empleado->i_pk_id])}}" class="btn btn-primary mt-3">Editar</a></td>
+                        <td> <a href="{{ route('empleados.edit',['id'=>$empleado->i_pk_id])}}" class="btn mt-1">Editar</a></td>
                     </tr>
                     @endforeach
                 </tbody> 
@@ -84,4 +92,29 @@
     </div>
 @endsection
 
+<!--Enlace a la biblioteca de jQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Se activa el evento al hacer clic en el boton para mostrar el formulario
+        $('#btnVerContenido').on('click', function() {
+            $('#verContenedor').toggle();
+        });
+        //Se activa el envento cada vez que se escribe en el campo email corporativo
+        $('#vc_email').on('input', function() {
+            var email = $(this).val(); //La variable obtiene el valor del campo email
+            var domain = email.substring(email.lastIndexOf("@") + 1); //Extrae la parte del dominio del correo para la validacion
+            var validDomains = ["bienestarprimero.com", "aggroup.la"]; //Dominios validos para el campo email
+            
+            if ($.inArray(domain, validDomains) == -1) {//Define un array con los dominios validos
+                $('#emailError').text("Correo electrónico no válido. Debe ser @bienestarprimero.com o @aggroup.la").show();
+                $('#Btnactividad').attr('disabled', 'disabled');//Desactiva el boton de envio
+            } else { 
+                //Si el dominio es valido esconde el mensaje de error y habilita el boton 
+                $('#emailError').hide();  
+                $('#Btnactividad').removeAttr('disabled');  
+            }
+        });
+    });
+</script>
 

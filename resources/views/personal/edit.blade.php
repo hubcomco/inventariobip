@@ -1,5 +1,7 @@
-@extends('layouts.admin');
-
+<head>
+    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
+</head>
+@extends('layouts.admin')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -32,13 +34,36 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('empleados.update')}}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{ route('empleados.update', $empleado->i_pk_id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         @include('personal.form.form')
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
+
+<!--Enlace a la biblioteca de jQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    //Asegura que el cdigo se ejecute dentro del formulario
+    $(document).ready(function() {
+        //Se activa el envento cada vez que se escribe en el campo email corporativo
+        $('#vc_email').on('input', function() {
+            var email = $(this).val(); //La variable obtiene el valor del campo email
+            var domain = email.substring(email.lastIndexOf("@") + 1); //Extrae la parte del dominio del correo para la validacion
+            var validDomains = ["bienestarprimero.com", "aggroup.la"]; //Dominios validos para el campo email
+            
+            if ($.inArray(domain, validDomains) == -1) {//Define un array con los dominios validos
+                $('#emailError').text("Correo electrónico no válido. Debe ser @bienestarprimero.com o @aggroup.la").show();
+                $('#Btnactividad').attr('disabled', 'disabled');//Desactiva el boton de envio
+            } else { //Si el dominio es valido esconde el mensaje de error y habilita el boton 
+                $('#emailError').hide();  
+                $('#Btnactividad').removeAttr('disabled');  
+            }
+        });
+    });
+</script>
 

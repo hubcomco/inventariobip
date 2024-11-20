@@ -118,6 +118,7 @@
     background-color:transparent !important;
 }
 .color-boton{
+    color: white !important;
     background-color: #f06323 !important;
     border: transparent !important;
 }
@@ -127,6 +128,8 @@
     transform: translateY(-3px);
     transition: 0.5s;
 }
+
+
 
 
 

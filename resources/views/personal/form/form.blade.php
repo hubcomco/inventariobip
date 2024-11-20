@@ -1,3 +1,6 @@
+<head>
+    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
+</head>
 @csrf
     <div class="form-group">
         <!-- Nombres y Apellidos en la misma fila -->
@@ -26,8 +29,9 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="vc_email">Email</label>
+                    <label for="vc_email">Email Corporativo</label>
                     <input id="vc_email" value="{{ $empleado->vc_email ?? '' }}"  name="vc_email" type="email" class="form-control" required>
+                    <small id="emailError" class="text-danger" style="display:none;"></small>
                 </div>
             </div>
         </div>
@@ -73,23 +77,23 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="vc_url_contrato">Contrato</label>
-                    <input id="vc_url_contrato" name="vc_url_contrato" type="file" class="form-control" required>
+                    <input id="vc_url_contrato" name="vc_url_contrato" type="file" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="vc_url_examenes">Exámenes</label>
-                    <input id="vc_url_examenes" name="vc_url_examenes" type="file" class="form-control" required>
+                    <input id="vc_url_examenes" name="vc_url_examenes" type="file" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="vc_url_cedula">Cédula</label>
-                    <input id="vc_url_cedula" name="vc_url_cedula" type="file" class="form-control" required>
+                    <input id="vc_url_cedula" name="vc_url_cedula" type="file" class="form-control">
                 </div>
             </div>
         </div>
 
         <!-- Botón de envío -->
-        <button type="submit" class="btn btn-primary mt-3">Guardar y enviar</button>
+        <button type="submit" class="btn mt-3" id="Btnactividad">Guardar y enviar</button>
     </div>

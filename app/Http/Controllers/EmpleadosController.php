@@ -12,8 +12,9 @@ class EmpleadosController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        
+    {   
+        $empleados = Empleado::all();
+        return view('personal.edit', compact('empleados'));
     }
 
     /**
@@ -59,9 +60,6 @@ class EmpleadosController extends Controller
        //Crear un empleado según los datos del formulario
        Empleado::Create($validatedData);
 
-       // Mensaje de confirmación al crear el empleado 
-       //dd('Empleado creado exitosamente', $validatedData);
-
        //Redirigir al crear el empleado mostrando un mensaje
        return back()->with('success', 'Empleado creado exitosamente');
     }
@@ -87,7 +85,7 @@ class EmpleadosController extends Controller
      */
     public function edit(string $id)
     {   
-       $empleado = Empleado::find($id);
+       $empleado = Empleado::findOrFail($id);
        return view('personal.edit', compact('empleado'));  
     }
 
@@ -96,7 +94,24 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'vc_nombre' => 'required|string|max:255', 
+            'vc_apellido' => 'required|string|max:255', 
+            'vc_cargo' => 'required|string|max:255', 
+            'vc_usuario_DA' => 'nullable|string|max:255', 
+            'vc_email' => 'required|email|max:255|unique:empleados,vc_email,'. $id, 
+            'vc_email_personal' => 'nullable|email|max:255', 
+            'vc_telefono' => 'required|string|max:20', 
+            'vc_telefono_corporativo' => 'nullable|string|max:20', 
+            'vc_url_contrato' => 'nullable|string|max:255', 
+            'vc_url_examenes' => 'nullable|string|max:255', 
+            'vc_url_cedula' => 'nullable|string|max:255', 
+            'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicaciones,i_pk_id', 
+        ]); 
+        
+        $empleado = Empleado::findOrFail($id); $empleado->update($validatedData);
+        
+        return redirect()->route('personal.index')->with('success', 'Empleado actualizado exitosamente');
     }
 
     /**

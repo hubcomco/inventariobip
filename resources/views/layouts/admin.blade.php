@@ -18,6 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
     <link href="{{ url('css/admin.css')}}" rel="stylesheet">
     <link href="{{ url('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
@@ -107,7 +108,7 @@
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
 </body>
-<script>
+<!--<script>
     $(document).ready(function() {
         $('.tabla-inventario').DataTable({
             paging: true,          // Habilita la paginación
@@ -115,12 +116,11 @@
             ordering: true,        // Habilita la ordenación
         });
 
-        $('#vc_telefono').on('change', function(){
-            alert($('#vc_telefono').val());
+        $('#vc_email').on('change', function(){
+            var email = $(this).val(); 
+            alert('El correo electrónico ingresado es: ' + email);
         })
-
-
     });
 </script>
-
+-->
 </html>

@@ -1,0 +1,49 @@
+div .row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+}
+
+.btn{
+    color: white;
+    background-color: #F06323;
+    border:none;
+    margin-top:3px;
+    margin-left: 48px;
+}
+
+.btn:hover{
+    background-color: #F06323;
+    color: white;
+    animation: blinker 0.8s both;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.582); /* Agrega sombra en el hover */
+    transform: translateY(-3px);
+    transition: 0.8s;
+}
+
+/*Animacion para los botones*/
+@keyframes blinker { 
+    0% {
+       transform: scale3d(1, 1, 1);
+    }
+    50% {
+       transform: scale3d(1.15, 0.85, 1);
+    }
+}
+
+tbody .btn{
+    background-color:#F06323;
+    color: white;
+}
+
+tbody .btn:hover{
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.582); /* Agrega sombra en el hover */
+    transform: translateY(-3px);
+    transition: 0.8s;
+}
+
+.sidebar-brand{
+    cursor: default;
+}

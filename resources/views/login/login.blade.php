@@ -55,8 +55,10 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                name="email" id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Correo">
+                                                name="email" id="Email" aria-describedby="emailHelp" placeholder="Correo">
+                                            <small 
+                                                id="emailError" class="text-danger" style="display:none;">
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
@@ -68,7 +70,7 @@
                                                 <label class="custom-control-label" for="customCheck">Recordar Contraseña</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block color-boton"> Ingresar </button>
+                                        <button type="submit" class="btn btn-user btn-block color-boton" id="Btnactividad"> Ingresar </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -86,6 +88,7 @@
             </div>
         </div>
     </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -94,4 +97,24 @@
     <!-- Custom scripts for all pages-->
     <script src=" {{ url('js/sb-admin-2.min.js')}}"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        //Se activa el envento cada vez que se escribe en el campo email corporativo
+        $('#Email').on('input', function() {
+            var email = $(this).val(); //La variable obtiene el valor del campo email
+            var domain = email.substring(email.lastIndexOf("@") + 1); //Extrae la parte del dominio del correo para la validacion
+            var validDomains = ["bienestarprimero.com", "aggroup.la"]; //Dominios validos para el campo email
+            
+            if ($.inArray(domain, validDomains) == -1) {//Define un array con los dominios validos
+                $('#emailError').text("Correo electrónico no válido. Debe ser @bienestarprimero.com o @aggroup.la").show();
+                $('#Btnactividad').attr('disabled', 'disabled');//Desactiva el boton de envio
+            } else { 
+                //Si el dominio es valido esconde el mensaje de error y habilita el boton 
+                $('#emailError').hide();  
+                $('#Btnactividad').removeAttr('disabled');  
+            }
+        });
+    });
+</script>
 </html>
