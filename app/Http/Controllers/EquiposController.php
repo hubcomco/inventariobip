@@ -43,7 +43,7 @@ class EquiposController extends Controller
         'i_fk_id_empleado' => 'nullable|integer|exists:empleados,i_pk_id', // Clave foránea debe existir
         ]);
         // Crear un nuevo equipo con los datos validados
-        $equipo = Equipo::create($validatedData);
+        Equipo::create($validatedData);
 
         //Redirigir al crear el empleado mostrando un mensaje
         return back()->with('success', 'Equipo creado exitosamente');

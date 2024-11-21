@@ -99,7 +99,7 @@ class EmpleadosController extends Controller
             'vc_apellido' => 'required|string|max:255', 
             'vc_cargo' => 'required|string|max:255', 
             'vc_usuario_DA' => 'nullable|string|max:255', 
-            'vc_email' => 'required|email|max:255|unique:empleados,vc_email,'. $id, 
+            'vc_email' => 'required|email|max:255', 
             'vc_email_personal' => 'nullable|email|max:255', 
             'vc_telefono' => 'required|string|max:20', 
             'vc_telefono_corporativo' => 'nullable|string|max:20', 
@@ -111,7 +111,7 @@ class EmpleadosController extends Controller
         
         $empleado = Empleado::findOrFail($id); $empleado->update($validatedData);
         
-        return redirect()->route('personal.index')->with('success', 'Empleado actualizado exitosamente');
+        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado exitosamente');
     }
 
     /**

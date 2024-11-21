@@ -26,7 +26,7 @@
     <!-- Botón para desplegar el formulario --> 
     <div class="row"> 
         <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Añadir Empleado</button>
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
         </div> 
     </div>
     
@@ -96,9 +96,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Se activa el evento al hacer clic en el boton para mostrar el formulario
-        $('#btnVerContenido').on('click', function() {
-            $('#verContenedor').toggle();
+        // Se activa el evento al hacer clic en el boton para mostrar el formulario u ocultarlo
+        $('#btnVerContenido').on('click', function() { 
+            $('#verContenedor').toggle(); 
+            if ($('#verContenedor').is(':visible')) { 
+                $('#btnVerContenido').text('Ocultar Formulario'); 
+            } else { 
+                $('#btnVerContenido').text('Abrir Formulario'); 
+            } 
         });
         //Se activa el envento cada vez que se escribe en el campo email corporativo
         $('#vc_email').on('input', function() {

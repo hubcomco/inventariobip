@@ -1,4 +1,8 @@
-<link href="{{ url('css/admin.css')}}" rel="stylesheet">
+<head>
+    <link href="{{ url('css/admin.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -17,21 +21,20 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Sección Principal
+        SECCIÓN ADMINISTRADOR
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmpleados" aria-expanded="true" aria-controls="collapseEmpleados">
+            <i class="bi bi-person-bounding-box"></i>
             <span>Empleados</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseEmpleados" class="collapse" aria-labelledby="headingEmpleados" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Opciones:</h6>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Registrar</a> 
-                <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a> 
+                <a class="collapse-item" href="{{ route('dashboard') }}">Registrar</a>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a>
                 <a class="collapse-item" href="{{ route('dashboard') }}">Eliminar</a>
             </div>
         </div>
@@ -39,18 +42,33 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEquipos"
+            aria-expanded="true" aria-controls="collapseEquipos">
+            <i class="bi bi-display"></i>
             <span>Equipos</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+        <div id="collapseEquipos" class="collapse" aria-labelledby="headingEquipos"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Opciones:</h6>
                 <a class="collapse-item" href="{{route('equipos.index')}}">Registrar</a>
                 <a class="collapse-item" href="utilities-border.html">Editar</a>
                 <a class="collapse-item" href="utilities-animation.html">Eliminar</a>
+            </div>
+        </div>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuariosRoles" aria-expanded="true" aria-controls="collapseUsuariosRoles">
+            <i class="bi bi-person-vcard"></i>
+            <span>Usuarios y roles</span>
+        </a>
+        <div id="collapseUsuariosRoles" class="collapse" aria-labelledby="headingUsuariosRoles" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Opciones:</h6>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Registrar</a>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Eliminar</a>
             </div>
         </div>
     </li>

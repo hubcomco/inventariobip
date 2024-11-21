@@ -1,3 +1,7 @@
+<head>
+    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
+</head>
+
 @extends('layouts.admin')
 
 @section('content')
@@ -9,7 +13,7 @@
 
     <div class="row"> 
         <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Añadir Empleado</button>
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
         </div> 
     </div>
 
@@ -52,7 +56,7 @@
                             <label for="dec_costo_equipo">Costo</label>
                             <input id="dec_costo_equipo" value="{{ $equipo->dec_costo_equipo ?? '' }}" name="dec_costo_equipo" type="number" class="form-control" step="0.01">
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Guardar Equipo</button>
+                        <button type="submit" class="btn mt-3">Guardar Equipo</button>
                     </form>
                 </div>
             </div>
@@ -98,8 +102,13 @@
 <script>
     $(document).ready(function() {
         // Se activa el evento al hacer clic en el boton para mostrar el formulario
-        $('#btnVerContenido').on('click', function() {
-            $('#verContenedor').toggle();
-         });
+        $('#btnVerContenido').on('click', function() { 
+            $('#verContenedor').toggle(); 
+            if ($('#verContenedor').is(':visible')) { 
+                $('#btnVerContenido').text('Ocultar Formulario'); 
+            } else { 
+                $('#btnVerContenido').text('Abrir Formulario'); 
+            } 
+        });
     });    
 </script>
