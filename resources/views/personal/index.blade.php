@@ -26,7 +26,7 @@
     <!-- Botón para desplegar el formulario --> 
     <div class="row"> 
         <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario de Registro</button>
         </div> 
     </div>
     
@@ -65,7 +65,8 @@
                         <th>Archivo Contrato</th> 
                         <th>Archivo Exámenes</th> 
                         <th>Archivo Cédula</th> 
-                        <th></th>    
+                        <th>Editar Empleado</th>    
+                        <th>Eliminar Empleado</th>    
                     </tr> 
                 </thead> 
                 <tbody> 
@@ -83,8 +84,15 @@
                         <td><a href="{{ Storage::url($empleado->vc_url_contrato)}}">Ver Contrato</a></td>
                         <td><a href="{{ Storage::url($empleado->vc_url_examenes)}}">Ver Examenes</a></td>
                         <td><a href="{{ Storage::url($empleado->vc_url_cedula)}}">Ver Cedula</a></td>
-                        <td> <a href="{{ route('empleados.edit',['id'=>$empleado->i_pk_id])}}" class="btn mt-1">Editar</a></td>
-                    </tr>
+                        <td><a href="{{ route('empleados.edit',['id'=>$empleado->i_pk_id])}}" class="btn mt-1">Editar</a></td>
+                        <td>
+                            <form action="{{ route('empleados.destroy', $empleado->i_pk_id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')  <!-- Esto simula un método DELETE -->
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                  </tr>
                     @endforeach
                 </tbody> 
             </table>
@@ -102,7 +110,7 @@
             if ($('#verContenedor').is(':visible')) { 
                 $('#btnVerContenido').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerContenido').text('Abrir Formulario'); 
+                $('#btnVerContenido').text('Abrir Formulario de Registro'); 
             } 
         });
         //Se activa el envento cada vez que se escribe en el campo email corporativo

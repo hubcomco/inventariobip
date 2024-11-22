@@ -32,10 +32,8 @@
         </a>
         <div id="collapseEmpleados" class="collapse" aria-labelledby="headingEmpleados" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Opciones:</h6>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Registrar</a>
+                <h class="collapse-header">Configuración:</h>
                 <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Eliminar</a>
             </div>
         </div>
     </li>
@@ -50,10 +48,7 @@
         <div id="collapseEquipos" class="collapse" aria-labelledby="headingEquipos"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Opciones:</h6>
                 <a class="collapse-item" href="{{route('equipos.index')}}">Registrar</a>
-                <a class="collapse-item" href="utilities-border.html">Editar</a>
-                <a class="collapse-item" href="utilities-animation.html">Eliminar</a>
             </div>
         </div>
     </li>
@@ -65,10 +60,7 @@
         </a>
         <div id="collapseUsuariosRoles" class="collapse" aria-labelledby="headingUsuariosRoles" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Opciones:</h6>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Registrar</a>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Eliminar</a>
+                <a class="collapse-item" href="{{ route('personal.usuarios') }}">Configurar</a>
             </div>
         </div>
     </li>

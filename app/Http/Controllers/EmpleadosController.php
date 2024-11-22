@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Empleado;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
@@ -71,7 +72,6 @@ class EmpleadosController extends Controller
     }
 
 
-
     /**
      * Display the specified resource.
      */
@@ -83,7 +83,7 @@ class EmpleadosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {   
        $empleado = Empleado::findOrFail($id);
        return view('personal.edit', compact('empleado'));  
@@ -119,6 +119,26 @@ class EmpleadosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $empleado = Empleado::findOrFail($id);
+            
+            // Elimina archivos relacionados, si es necesario
+            if ($empleado->vc_url_contrato) {
+                Storage::delete($empleado->vc_url_contrato);
+            }
+            if ($empleado->vc_url_examenes) {
+                Storage::delete($empleado->vc_url_examenes);
+            }
+            if ($empleado->vc_url_cedula) {
+                Storage::delete($empleado->vc_url_cedula);
+            }
+    
+            // Elimina el registro de la base de datos
+            $empleado->delete();
+    
+            return redirect()->route('empleados.index')->with('success', 'Empleado eliminado con éxito.');
+        } catch (\Exception $e) {
+            return redirect()->route('empleados.index')->with('error', 'No se pudo eliminar el empleado.');
+        }
     }
 }

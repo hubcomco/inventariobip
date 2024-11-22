@@ -1,5 +1,5 @@
 <head>
-    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
+    <link href="{{ url('css/vistadash.css') }}" rel="stylesheet">
 </head>
 
 @extends('layouts.admin')
@@ -13,11 +13,11 @@
 
     <div class="row"> 
         <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario de Registro</button>
         </div> 
     </div>
 
-    <div class="row" id="verContenedor" style="display:none;">
+    <div class="row" id="verContenedor" style="display: none;">
         <div class="col-md-8">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
@@ -30,32 +30,84 @@
                         @csrf
                         <div class="form-group">
                             <label for="vc_nombre_equipo">Nombre del Equipo</label>
-                            <input id="vc_nombre_equipo" value="{{ $equipo->vc_nombre_equipo ?? '' }}" name="vc_nombre_equipo" type="text" class="form-control" required>
+                            <input id="vc_nombre_equipo" 
+                                   value="{{ $equipo->vc_nombre_equipo ?? '' }}" 
+                                   name="vc_nombre_equipo" 
+                                   type="text" 
+                                   class="form-control" 
+                                   required>
                         </div>
+
                         <div class="form-group">
                             <label for="t_componentes_generales">Componentes Generales</label>
-                            <input id="t_componentes_generales" value="{{ $equipo->t_componentes_generales ?? '' }}" name="t_componentes_generales" type="text" class="form-control" required>
+                            <input id="t_componentes_generales" 
+                                   value="{{ $equipo->t_componentes_generales ?? '' }}" 
+                                   name="t_componentes_generales" 
+                                   type="text" 
+                                   class="form-control" 
+                                   required>
                         </div>
-                        <div class="form-group">
-                            <label for="vc_serial_equipo">Serial del Equipo</label>
-                            <input id="vc_serial_equipo" value="{{ $equipo->vc_serial_equipo ?? '' }}" name="vc_serial_equipo" type="text" class="form-control" required>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="vc_serial_equipo">Serial del Equipo</label>
+                                    <input id="vc_serial_equipo" 
+                                           value="{{ $equipo->vc_serial_equipo ?? '' }}" 
+                                           name="vc_serial_equipo" 
+                                           type="text" 
+                                           class="form-control" 
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="vc_marca">Marca</label>
+                                    <input id="vc_marca" 
+                                           value="{{ $equipo->vc_marca ?? '' }}" 
+                                           name="vc_marca" 
+                                           type="text" 
+                                           class="form-control" 
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="vc_modelo">Modelo</label>
+                                    <input id="vc_modelo" 
+                                           value="{{ $equipo->vc_modelo ?? '' }}" 
+                                           name="vc_modelo" 
+                                           type="text" 
+                                           class="form-control" 
+                                           required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="vc_marca">Marca</label>
-                            <input id="vc_marca" value="{{ $equipo->vc_marca ?? '' }}" name="vc_marca" type="text" class="form-control" required>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="d_fecha_compra">Fecha de Compra</label>
+                                    <input id="d_fecha_compra" 
+                                           value="{{ $equipo->d_fecha_compra ?? '' }}" 
+                                           name="d_fecha_compra" 
+                                           type="date" 
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dec_costo_equipo">Costo</label>
+                                    <input id="dec_costo_equipo" 
+                                           value="{{ $equipo->dec_costo_equipo ?? '' }}" 
+                                           name="dec_costo_equipo" 
+                                           type="number" 
+                                           class="form-control" 
+                                           step="0.01">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="vc_modelo">Modelo</label>
-                            <input id="vc_modelo" value="{{ $equipo->vc_modelo ?? '' }}" name="vc_modelo" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="d_fecha_compra">Fecha de Compra</label>
-                            <input id="d_fecha_compra" value="{{ $equipo->d_fecha_compra ?? '' }}" name="d_fecha_compra" type="date" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="dec_costo_equipo">Costo</label>
-                            <input id="dec_costo_equipo" value="{{ $equipo->dec_costo_equipo ?? '' }}" name="dec_costo_equipo" type="number" class="form-control" step="0.01">
-                        </div>
+
                         <button type="submit" class="btn mt-3">Guardar Equipo</button>
                     </form>
                 </div>
@@ -89,7 +141,9 @@
                             <td>{{ $equipo->vc_modelo }}</td>
                             <td>{{ $equipo->d_fecha_compra }}</td>
                             <td>{{ $equipo->dec_costo_equipo }}</td>
-                            <td><a href="{{ route('equipos.edit', ['id' => $equipo->id]) }}" class="btn btn-primary">Editar</a></td>
+                            <td>
+                                <a href="{{ route('equipos.edit', ['id' => $equipo->id]) }}" class="btn">Editar</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -101,13 +155,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Se activa el evento al hacer clic en el boton para mostrar el formulario
+        // Mostrar u ocultar el formulario al hacer clic en el botón
         $('#btnVerContenido').on('click', function() { 
             $('#verContenedor').toggle(); 
             if ($('#verContenedor').is(':visible')) { 
                 $('#btnVerContenido').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerContenido').text('Abrir Formulario'); 
+                $('#btnVerContenido').text('Abrir Formulario de Registro'); 
             } 
         });
     });    

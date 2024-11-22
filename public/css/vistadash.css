@@ -32,11 +32,33 @@ tbody .btn{
 
 tbody .btn:hover{
     color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.582); /* Agrega sombra en el hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.582);
     transform: translateY(-3px);
     transition: 0.8s;
 }
 
+
+/*LOGO INVENTARIO BIP*/
 .sidebar-brand{
     cursor: default;
+}
+
+
+
+/*AJUSTE TABLA USUARIOS Y ROLES*/
+.btn-edit {
+    margin-right: 5px; 
+}
+
+.btn-delete {
+    margin-left: 5px; 
+}
+
+.table .btn {
+    padding: 5px 10px; /* Ajusta el espacio */
+    font-size: 14px; 
+}
+th:last-child, td:last-child {
+    width: 120px; /* Ajusta el ancho de la tabla */
+    text-align: center;
 }

@@ -57,7 +57,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="vc_telefono_corporativo">Teléfono Corporativo</label>
-                    <input id="vc_telefono_corporativo" value="{{ $empleado->vc_telefono_corporativo ?? '' }}"  name="vc_telefono_corporativo" type="tel" class="form-control" required>
+                    <input id="vc_telefono_corporativo" value="{{ $empleado->vc_telefono_corporativo ?? '' }}"  name="vc_telefono_corporativo" type="number" class="form-control" required>
                 </div>
             </div>
         </div>

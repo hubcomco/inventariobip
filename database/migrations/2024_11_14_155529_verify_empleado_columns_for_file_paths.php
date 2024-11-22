@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('empleado', function (Blueprint $table) { 
-            $table->string('vc_url_contrato', 255)->change(); 
-            $table->string('vc_url_examenes', 255)->change(); 
-            $table->string('vc_url_cedula', 255)->change(); 
+            $table->string('vc_url_contrato', 255)->nullable()->change(); 
+            $table->string('vc_url_examenes', 255)->nullable()->change(); 
+            $table->string('vc_url_cedula', 255)->nullable()->change(); 
         });
     }
 
@@ -24,9 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('empleado', function (Blueprint $table) { 
-            $table->string('vc_url_contrato')->change(); 
-            $table->string('vc_url_examenes')->change(); 
-            $table->string('vc_url_cedula')->change();
+            $table->string('vc_url_contrato')->nullable()->change(); 
+            $table->string('vc_url_examenes')->nullable()->change(); 
+            $table->string('vc_url_cedula')->nullable()->change();
         });
     }
 };
