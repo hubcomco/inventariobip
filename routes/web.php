@@ -45,6 +45,9 @@ Route::post('/usuarios/store',[UserController::class, 'store'])->name('personal.
 Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('personal.usuarios.edit');
 //Ruta para eliminar los Usuarios
 Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('personal.usuarios.destroy');
+//Ruta para actualizar los usuarios
+Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('personal.usuarios.update');
+
 
 //Ruta para registrar el Rol
 Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
