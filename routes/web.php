@@ -6,6 +6,7 @@ use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\HistorialesController;
 use App\Models\Rol;
 
 //Ruta login
@@ -48,7 +49,6 @@ Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('perso
 //Ruta para actualizar los usuarios
 Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('personal.usuarios.update');
 
-
 //Ruta para registrar el Rol
 Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
 //Ruta que actualiza los roles luego de ser eliminados
@@ -58,6 +58,7 @@ Route::get('/roles/{id}/edit', [RolController::class, 'edit'])->name('roles.edit
 ////Ruta para eliminar los roles
 Route::delete('/roles/{id}', [RolController::class, 'destroy'])->name('roles.destroy'); 
 
+Route::get('/historial', [HistorialesController::class, 'index'])->name('personal.historial');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

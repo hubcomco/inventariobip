@@ -108,6 +108,30 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_estado_equipo">Estado del Equipo</label>
+                                    <input id="vc_estado_equipo" 
+                                           value="{{ $equipo->vc_estado_equipo ?? '' }}" 
+                                           name="vc_estado_equipo" 
+                                           type="text" 
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dec_costo_equipo">Garantia</label>
+                                    <input id="dec_costo_equipo" 
+                                           value="{{ $equipo->vc_garantia_equipo ?? '' }}" 
+                                           name="vc_garantia_equipo" 
+                                           type="text" 
+                                           class="form-control" 
+                                           >
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn mt-3">Guardar Equipo</button>
                     </form>
                 </div>
@@ -128,6 +152,8 @@
                         <th>Modelo</th>
                         <th>Fecha de Compra</th>
                         <th>Costo</th>
+                        <th>Estado</th>
+                        <th>Garantia</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -141,6 +167,8 @@
                             <td>{{ $equipo->vc_modelo }}</td>
                             <td>{{ $equipo->d_fecha_compra }}</td>
                             <td>{{ $equipo->dec_costo_equipo }}</td>
+                            <td>{{ $equipo->vc_estado_equipo }}</td>
+                            <td>{{ $equipo->vc_garantia_equipo }}</td>
                             <td>
                                 <a href="{{ route('equipos.edit', ['id' => $equipo->id]) }}" class="btn">Editar</a>
                             </td>

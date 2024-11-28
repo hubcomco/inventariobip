@@ -37,6 +37,17 @@
         <li></li>
         <li></li>
     </ul>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    
     <div class="container vh-100 d-flex align-items-center justify-content-center color-fondo1">
         <!-- Outer Row -->
         <div class="row form-login justify-content-center">

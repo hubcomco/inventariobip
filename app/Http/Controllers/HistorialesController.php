@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Historial;
 
 class HistorialesController extends Controller
 {
@@ -11,7 +12,8 @@ class HistorialesController extends Controller
      */
     public function index()
     {
-        dd('estoy en historiales');
+        $historiales = Historial::all();
+        return view('personal.historial', compact('historiales'));
     }
 
     /**
