@@ -7,7 +7,9 @@ use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\HistorialesController;
+use App\Http\Controllers\UbicacionesController;
 use App\Models\Rol;
+use App\Models\Ubicacion;
 
 //Ruta login
 Route::get('/', function () {return view('login.login');});
@@ -58,7 +60,16 @@ Route::get('/roles/{id}/edit', [RolController::class, 'edit'])->name('roles.edit
 ////Ruta para eliminar los roles
 Route::delete('/roles/{id}', [RolController::class, 'destroy'])->name('roles.destroy'); 
 
+//Ruta para ver el Historial
 Route::get('/historial', [HistorialesController::class, 'index'])->name('personal.historial');
+//Ruta para ver editar el Historial
+Route::get('/historial/{id}/edit', [HistorialesController::class, 'edit'])->name('historial.edit');
+
+//Ruta para ver las Ubicaciones
+Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('personal.ubicaciones');
+//Ruta para registrar las Ubicaciones
+Route::post('/ubicaciones/store', [UbicacionesController::class, 'store'])->name('ubicaciones.store');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

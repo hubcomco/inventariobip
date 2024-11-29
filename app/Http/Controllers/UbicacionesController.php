@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 
 class UbicacionesController extends Controller
@@ -11,7 +12,8 @@ class UbicacionesController extends Controller
      */
     public function index()
     {
-        dd('estoy en ubicaciones');
+        $ubicaciones=Ubicacion::all();
+        return view('personal.ubicaciones', compact('ubicaciones'));
     }
 
     /**
@@ -19,7 +21,7 @@ class UbicacionesController extends Controller
      */
     public function create()
     {
-        dd('estoy en el create');
+       
     }
 
     /**
@@ -27,7 +29,14 @@ class UbicacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'vc_pais' => 'required|string|max:100',
+            'vc_ciudad' => 'required|string|max:100',
+            'vc_direccion' => 'required|string|max:255',
+            ]);
+            // Crear un nuevo equipo con los datos validados
+        Ubicacion::create($validatedData);
+        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación creada exitosamente.');    
     }
 
     /**

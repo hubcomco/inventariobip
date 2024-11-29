@@ -75,31 +75,32 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHistoriales"
+            aria-expanded="true" aria-controls="collapseHistoriales">
             <i class="fas fa-fw fa-folder"></i>
             <span>Historiales</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseHistoriales" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Historial de Equipos:</h6>
+                <h6 class="collapse-header">Opciones de Historial:</h6>
                 <a class="collapse-item" href="{{ route('personal.historial') }}">Consultar</a>
+                <a class="collapse-item" href="{{ route('historial.edit', ['id' => 1]) }}">Editar</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePaises"
+            aria-expanded="true" aria-controls="collapsePaises">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Paises</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Ubicaciones</span></a>
+            <span>Paises y Ubicaciones</span>
+        </a>
+        <div id="collapsePaises" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Lugares de Operación BIP:</h6>
+                <a class="collapse-item" href="{{ route('personal.ubicaciones') }}">Consultar</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

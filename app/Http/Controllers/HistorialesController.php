@@ -12,7 +12,7 @@ class HistorialesController extends Controller
      */
     public function index()
     {
-        $historiales = Historial::all();
+        $historiales = Historial::with(['equipo', 'empleado', 'ubicaciones'])->get();
         return view('personal.historial', compact('historiales'));
     }
 
@@ -45,7 +45,8 @@ class HistorialesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $historiales = Historial::findOrFail($id);
+        return view('personal.editHisto', compact('historiales'));
     }
 
     /**

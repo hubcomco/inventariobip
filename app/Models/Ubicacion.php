@@ -12,12 +12,13 @@ class Ubicacion extends Model
     protected $primaryKey = 'i_pk_id';
     
     protected $fillable = [
-        'i_fk_id_pais',
+        'vc_pais',
         'vc_direccion',
         'vc_ciudad'
     ];
 
-    public function pais(){ /*Cada ubicacion pertenece a un pais*/
-        return $this->belongsTo(Pais::class, 'i_fk_id_pais');
+    public function historiales()
+    {
+        return $this->hasMany(Historial::class, 'i_fk_id_ubicacion');
     }
 }
