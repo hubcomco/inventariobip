@@ -126,8 +126,7 @@
                                            value="{{ $equipo->vc_garantia_equipo ?? '' }}" 
                                            name="vc_garantia_equipo" 
                                            type="text" 
-                                           class="form-control" 
-                                           >
+                                           class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -154,7 +153,6 @@
                         <th>Costo</th>
                         <th>Estado</th>
                         <th>Garantia</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -170,7 +168,7 @@
                             <td>{{ $equipo->vc_estado_equipo }}</td>
                             <td>{{ $equipo->vc_garantia_equipo }}</td>
                             <td>
-                                <a href="{{ route('equipos.edit', ['id' => $equipo->id]) }}" class="btn">Editar</a>
+                                <a href="{{ route('equipos.edit', ['id' => $equipo->i_pk_id]) }}" class="btn">Editar</a>
                             </td>
                         </tr>
                     @endforeach

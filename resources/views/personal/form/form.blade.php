@@ -1,7 +1,8 @@
 <head>
     <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
 </head>
-@csrf
+
+    @csrf
     <div class="form-group">
         <!-- Nombres y Apellidos en la misma fila -->
         <div class="row">

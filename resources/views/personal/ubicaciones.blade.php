@@ -87,8 +87,16 @@
                             <td>{{ $ubicacion->vc_pais  }}</td>
                             <td>{{ $ubicacion->vc_ciudad  }}</td>
                             <td>{{ $ubicacion->vc_direccion  }}</td>
-                            <td><a href="{{ route('historial.edit', ['id' => $ubicacion->i_pk_id]) }}" class="btn btn-edit">Editar</a></td>    
+                            <td><a href="{{ route('ubicaciones.edit', ['id' => $ubicacion->i_pk_id]) }}" class="btn btn-edit">Editar</a></td>    
+                            <td>
+                                <form action="{{ route('ubicaciones.destroy', $ubicacion->i_pk_id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
+                                </form> 
+                            </td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>

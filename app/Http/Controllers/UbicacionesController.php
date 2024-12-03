@@ -52,7 +52,9 @@ class UbicacionesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ubicaciones = Ubicacion::findOrFail($id);
+        // Retorna una vista específica para editar roles
+        return view('personal.editUbi', compact('ubicaciones'));
     }
 
     /**
@@ -60,7 +62,18 @@ class UbicacionesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validación de los datos del formulario
+        $validatedData = $request->validate([
+            'vc_pais' => 'required|string|max:255', 
+            'vc_ciudad' => 'required|string|max:255|',
+            'vc_direccion' => 'required|string|max:255',
+        ]);
+        // Busca el usuario en la base de datos
+        $ubicaciones = Ubicacion::findOrFail($id);
+        // Actualiza los datos del usuario
+        $ubicaciones->update($validatedData);
+        // Redirige a la lista de usuarios con un mensaje
+        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación actualizada exitosamente.');
     }
 
     /**
@@ -68,6 +81,12 @@ class UbicacionesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ubicaciones = Ubicacion::findOrFail($id);
+
+        // Elimina el rol
+        $ubicaciones->delete();
+
+        // Redirige de vuelta con un mensaje de éxito
+        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación eliminada exitosamente.');
     }
 }

@@ -115,7 +115,7 @@
     </div>
 
     <div class="row" id="verRol" style="display:none;">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -175,7 +175,7 @@
         $('#btnVerUsuario').on('click', function() { 
             $('#verUsuario').toggle(); 
             if ($('#verUsuario').is(':visible')) { 
-                $('#btnVerUsuario').text('Ocultar Formulario de Usuario'); 
+                $('#btnVerUsuario').text('Ocultar Formulario'); 
             } else { 
                 $('#btnVerUsuario').text('Abrir Formulario de Usuario'); 
             } 
@@ -185,7 +185,7 @@
         $('#btnVerRol').on('click', function() { 
             $('#verRol').toggle(); 
             if ($('#verRol').is(':visible')) { 
-                $('#btnVerRol').text('Ocultar Formulario de Rol'); 
+                $('#btnVerRol').text('Ocultar Formulario'); 
             } else { 
                 $('#btnVerRol').text('Abrir Formulario de Rol'); 
             } 

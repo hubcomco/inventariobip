@@ -39,6 +39,8 @@ Route::get('/equipos', [EquiposController::class, 'index'])->name('equipos.index
 Route::post('/equipos/store', [EquiposController::class, 'store'])->name('equipos.store');
 //Ruta para editar los equipos mediante la tabla de equipos
 Route::get('/equipos/{id}/edit', [EquiposController::class, 'edit'])->name('equipos.edit');
+//Ruta paraq actualizar los equipos
+Route::put('/equipos/{id}', [EquiposController::class, 'update'])->name('equipos.update');
 
 //Ruta para ver los usuarios registrados
 Route::get('/usuarios', [UserController::class, 'index'])->name('personal.usuarios');
@@ -69,7 +71,12 @@ Route::get('/historial/{id}/edit', [HistorialesController::class, 'edit'])->name
 Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('personal.ubicaciones');
 //Ruta para registrar las Ubicaciones
 Route::post('/ubicaciones/store', [UbicacionesController::class, 'store'])->name('ubicaciones.store');
-
+//Ruta para editar las ubicaciones
+Route::get('/ubicaciones/{id}/edit', [UbicacionesController::class, 'edit'])->name('ubicaciones.edit');
+//Ruta para eliminar las ubicaciones
+Route::delete('/ubicaciones/{id}', [UbicacionesController::class, 'destroy'])->name('ubicaciones.destroy'); 
+//Ruta para actualizar las ubicaciones
+Route::put('/ubicaciones/{id}', [UbicacionesController::class, 'update'])->name('ubicaciones.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
