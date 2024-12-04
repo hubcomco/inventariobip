@@ -17,7 +17,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('equipos.update', $equipo->i_pk_id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('equipos.update', $equipo->i_pk_id)}}" method="POST">
                         @csrf
                         @method('PUT')
                         @include('personal.equipos')

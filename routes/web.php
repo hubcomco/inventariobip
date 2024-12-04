@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\HistorialesController;
 use App\Http\Controllers\UbicacionesController;
+use App\Models\Equipo;
 use App\Models\Rol;
 use App\Models\Ubicacion;
 
@@ -41,6 +42,9 @@ Route::post('/equipos/store', [EquiposController::class, 'store'])->name('equipo
 Route::get('/equipos/{id}/edit', [EquiposController::class, 'edit'])->name('equipos.edit');
 //Ruta paraq actualizar los equipos
 Route::put('/equipos/{id}', [EquiposController::class, 'update'])->name('equipos.update');
+//Ruta pra eliminar los equipos
+Route::delete('/equipos/{id}', [EquiposController::class, 'destroy'])->name('equipos.destroy');
+
 
 //Ruta para ver los usuarios registrados
 Route::get('/usuarios', [UserController::class, 'index'])->name('personal.usuarios');

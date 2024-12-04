@@ -17,6 +17,22 @@
         </div> 
     </div>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="row" id="verContenedor" style="display: none;">
         <div class="col-md-8">
             <div class="card shadow mb-4">
@@ -153,6 +169,7 @@
                         <th>Costo</th>
                         <th>Estado</th>
                         <th>Garantia</th>
+                        <th colspan="2" style="text-align: center;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -169,6 +186,13 @@
                             <td>{{ $equipo->vc_garantia_equipo }}</td>
                             <td>
                                 <a href="{{ route('equipos.edit', ['id' => $equipo->i_pk_id]) }}" class="btn">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('equipos.destroy', $equipo->i_pk_id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
+                                </form> 
                             </td>
                         </tr>
                     @endforeach

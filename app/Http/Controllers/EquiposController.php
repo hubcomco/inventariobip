@@ -64,8 +64,8 @@ class EquiposController extends Controller
      */
     public function edit(string $id)
     {
-        $equipos = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
-        return view('personal.editEqui', compact('equipos'));
+        $equipo = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
+        return view('personal.editEqui', compact('equipo'));
     }
 
     /**
@@ -88,8 +88,8 @@ class EquiposController extends Controller
         ]);
 
         try {
-            $equipos = Equipo::findOrFail($id);
-            $equipos->update($validatedData);
+            $equipo = Equipo::findOrFail($id);
+            $equipo->update($validatedData);
             return redirect()->route('equipos.index')->with('success', 'Equipo actualizado exitosamente');
         } catch (\Exception $e) {
             return back()->withErrors('Error al actualizar el equipo: ' . $e->getMessage());
@@ -103,8 +103,8 @@ class EquiposController extends Controller
     public function destroy(string $id)
     {
         try {
-            $equipos = Equipo::findOrFail($id);
-            $equipos->delete();
+            $equipo = Equipo::findOrFail($id);
+            $equipo->delete();
             return redirect()->route('equipos.index')->with('success', 'Equipo eliminado exitosamente');
         } catch (\Exception $e) {
             return back()->withErrors('Error al eliminar el equipo: ' . $e->getMessage());
