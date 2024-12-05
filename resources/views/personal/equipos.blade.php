@@ -37,7 +37,7 @@
         <div class="col-md-8">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
                     <h6 class="m-0 font-weight-bold text-dark">Creación de Equipo</h6>
                 </div>
                 <!-- Card Body -->
@@ -160,26 +160,29 @@
             <table class="table tabla-inventario">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
-                        <th>Componentes Generales</th>
                         <th>Serial</th>
-                        <th>Marca</th>
                         <th>Modelo</th>
-                        <th>Fecha de Compra</th>
+                        <th>Marca</th>
+                        <th>Componentes Generales</th>
+                        <th>Fecha Compra</th>
                         <th>Costo</th>
                         <th>Estado</th>
                         <th>Garantia</th>
-                        <th colspan="2" style="text-align: center;"></th>
+                        <th colspan="2" style="text-align: center;">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($equipos as $equipo)
                         <tr>
+                        
+                            <td>{{ $equipo->i_pk_id }}</td>
                             <td>{{ $equipo->vc_nombre_equipo }}</td>
-                            <td>{{ $equipo->t_componentes_generales }}</td>
                             <td>{{ $equipo->vc_serial_equipo }}</td>
-                            <td>{{ $equipo->vc_marca }}</td>
                             <td>{{ $equipo->vc_modelo }}</td>
+                            <td>{{ $equipo->vc_marca }}</td>
+                            <td>{{ $equipo->t_componentes_generales }}</td>
                             <td>{{ $equipo->d_fecha_compra }}</td>
                             <td>{{ $equipo->dec_costo_equipo }}</td>
                             <td>{{ $equipo->vc_estado_equipo }}</td>

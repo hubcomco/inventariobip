@@ -29,7 +29,7 @@
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
                     <h6 class="m-0 font-weight-bold text-dark">Edición empleado</h6>
                 </div>
                 <!-- Card Body -->
@@ -37,7 +37,7 @@
                     <form action="{{ route('empleados.update', $empleado->i_pk_id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        @include('personal.form.form')
+                        @include('personal.form.empleados')
                     </form>
                 </div>
             </div>

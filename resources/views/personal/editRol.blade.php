@@ -28,8 +28,8 @@
         <div class="col-md-6">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-dark">Edición empleado</h6>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
+                    <h6 class="m-0 font-weight-bold text-dark">Edición Roles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -40,7 +40,7 @@
                             <label for="vc_rol">Nombre del Rol</label>
                             <input type="text" id="vc_rol" name="vc_rol" value="{{ $rol->vc_rol }}" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn">Actualizar Rol</button>
+                        <button type="submit" class="btn">Actualizar</button>
                         <a href="{{ route('personal.usuarios') }}" class="btn">Regresar a Usuarios</a>
                     </form>
                 </div>                

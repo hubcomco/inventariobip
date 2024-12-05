@@ -9,6 +9,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\HistorialesController;
 use App\Http\Controllers\UbicacionesController;
 use App\Models\Equipo;
+use App\Models\Historial;
 use App\Models\Rol;
 use App\Models\Ubicacion;
 
@@ -59,7 +60,7 @@ Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('personal.
 
 //Ruta para registrar el Rol
 Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
-//Ruta que actualiza los roles luego de ser eliminados
+//Ruta para actualizar los roles
 Route::put('/roles/{id}', [RolController::class, 'update'])->name('roles.update');
 //Ruta para editar los roles
 Route::get('/roles/{id}/edit', [RolController::class, 'edit'])->name('roles.edit');
@@ -68,8 +69,14 @@ Route::delete('/roles/{id}', [RolController::class, 'destroy'])->name('roles.des
 
 //Ruta para ver el Historial
 Route::get('/historial', [HistorialesController::class, 'index'])->name('personal.historial');
+//Ruta para registrar las observaciones en historial
+Route::post('/historial/store',[HistorialesController::class, 'store'])->name('historial.store');
 //Ruta para ver editar el Historial
 Route::get('/historial/{id}/edit', [HistorialesController::class, 'edit'])->name('historial.edit');
+//Ruta para actualizar el historial
+Route::put('/historial/{id}', [HistorialesController::class, 'update'])->name('historial.update');
+//Ruta para eliminar el historial 
+Route::delete('/historial/{id}', [HistorialesController::class, 'destroy'])->name('historial.destroy');
 
 //Ruta para ver las Ubicaciones
 Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('personal.ubicaciones');

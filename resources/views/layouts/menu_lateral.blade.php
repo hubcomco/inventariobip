@@ -82,9 +82,8 @@
         </a>
         <div id="collapseHistoriales" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Opciones de Historial:</h6>
+                <h6 class="collapse-header">Equipos de Bip:</h6>
                 <a class="collapse-item" href="{{ route('personal.historial') }}">Consultar</a>
-                <a class="collapse-item" href="{{ route('historial.edit', ['id' => 1]) }}">Editar</a>
             </div>
         </div>
     </li>

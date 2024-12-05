@@ -35,13 +35,13 @@
         <div class="col-md-11">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
                     <h6 class="m-0 font-weight-bold text-dark">Creación empleado</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <form action="{{ route('empleados.store')}}" method="POST" enctype="multipart/form-data">
-                        @include('personal.form.form')
+                        @include('personal.form.empleados')
                     </form>
                 </div>
             </div>
@@ -53,7 +53,8 @@
         <div class="table-responsive">
             <table class="table tabla-inventario">
                 <thead> 
-                    <tr> 
+                    <tr>
+                        <th>Id</th>
                         <th>Nombre</th> 
                         <th>Apellido</th> 
                         <th>Cargo</th> 
@@ -65,14 +66,14 @@
                         <th>Archivo Contrato</th> 
                         <th>Archivo Exámenes</th> 
                         <th>Archivo Cédula</th> 
-                        <th>Editar Empleado</th>    
-                        <th>Eliminar Empleado</th>    
+                        <th colspan="2" style="text-align: center;">Opciones Disponibles</th>
                     </tr> 
                 </thead> 
                 <tbody> 
                     <!--Crea una tabla HTML donde cada fila representa un empleado, mostrando todas sus propiedades-->
                     @foreach ($empleados as $empleado) 
                     <tr> <!--Cada tr representa una fila en la tabla, dentro de cada fila td representa una celda-->
+                        <td>{{ $empleado->i_pk_id }}</td> 
                         <td>{{ $empleado->vc_nombre }}</td> 
                         <td>{{ $empleado->vc_apellido }}</td> 
                         <td>{{ $empleado->vc_cargo }}</td> 

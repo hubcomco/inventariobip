@@ -42,7 +42,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="vc_email_personal">Email Personal</label>
-                    <input id="vc_email_personal" value="{{ $empleado->vc_email_personal ?? '' }}"  name="vc_email_personal" type="email" class="form-control" required>
+                    <input id="vc_email_personal" value="{{ $empleado->vc_email_personal ?? '' }}"  name="vc_email_personal" type="email" class="form-control" >
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="vc_telefono_corporativo">Teléfono Corporativo</label>
-                    <input id="vc_telefono_corporativo" value="{{ $empleado->vc_telefono_corporativo ?? '' }}"  name="vc_telefono_corporativo" type="number" class="form-control" required>
+                    <input id="vc_telefono_corporativo" value="{{ $empleado->vc_telefono_corporativo ?? '' }}"  name="vc_telefono_corporativo" type="number" class="form-control" >
                 </div>
             </div>
         </div>
