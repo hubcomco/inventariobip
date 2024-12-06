@@ -31,6 +31,14 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-dark">Edición del Historial</h6>
                 </div>
+                <div class="card-body">
+                    <form action="{{ route('historial.update' , $historiales->i_pk_id)}}" method="POST"  class="button-group">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn">Actualizar</button>
+                        <a href="{{ route('personal.historial') }}" class="btn">Regresar a Historiales</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -19,27 +19,29 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validacion de datos
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'rol_id' => 'required|exists:rol,i_pk_id', // Validar que el rol existe
         ]);
 
-        // Crear el usuario en la base de datos
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']), // Hash de la contraseña
+            'password' => Hash::make($validatedData['password']),
+            'rol_id' => $validatedData['rol_id'], // Guardar el rol
         ]);
 
         return redirect()->route('personal.usuarios')->with('success', 'Usuario creado exitosamente.');
     }
 
+
     public function edit(string $id)
     {
         $usuario = User::findOrFail($id);
-        return view('personal.form.editUser', compact('usuario'));
+        $roles = Rol::all();
+        return view('personal.form.editUser', compact('usuario' , 'roles'));
     }
 
 
@@ -55,16 +57,18 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // Validación de los datos del formulario
+        // Validación de datos
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255', 
+            'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'rol_id' => 'required|exists:rol,i_pk_id', // Validar que el rol exista
         ]);
-        // Busca el usuario en la base de datos
+    
+        // Actualizar el usuario
         $usuario = User::findOrFail($id);
-        // Actualiza los datos del usuario
         $usuario->update($validatedData);
-        // Redirige a la lista de usuarios con un mensaje
+    
         return redirect()->route('personal.usuarios')->with('success', 'Usuario actualizado exitosamente.');
     }
+    
 }

@@ -45,6 +45,19 @@
                             <label for="email">Correo del Usuario</label>
                             <input type="text" id="email" name="email" value="{{ $usuario->email }}" class="form-control" required>
                         </div>
+
+                        <div class="form-group">
+                            <label for="rol_id">Rol del Usuario</label>
+                            <select id="rol_id" name="rol_id" class="form-control" required>
+                                <option value="" disabled>Seleccionar un rol</option>
+                                @foreach($roles as $rol)
+                                    <option value="{{ $rol->i_pk_id }}" {{ $usuario->rol_id == $rol->i_pk_id ? 'selected' : '' }}>
+                                        {{ $rol->vc_rol }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn">Actualizar Usuario</button>
                         <a href="{{ route('personal.usuarios') }}" class="btn">Regresar a Usuarios</a>
                     </form>

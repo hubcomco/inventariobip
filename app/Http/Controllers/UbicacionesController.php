@@ -13,7 +13,9 @@ class UbicacionesController extends Controller
     public function index()
     {
         $ubicaciones=Ubicacion::all();
-        return view('personal.ubicaciones', compact('ubicaciones'));
+        // Cargar el archivo json
+        $paisesCiudades = json_decode(file_get_contents(storage_path('app/paises_ciudades.json')), true);
+        return view('personal.ubicaciones', compact('ubicaciones', 'paisesCiudades'));
     }
 
     /**
@@ -53,8 +55,8 @@ class UbicacionesController extends Controller
     public function edit(string $id)
     {
         $ubicaciones = Ubicacion::findOrFail($id);
-        // Retorna una vista específica para editar roles
-        return view('personal.editUbi', compact('ubicaciones'));
+        $paisesCiudades = json_decode(file_get_contents(storage_path('app/paises_ciudades.json')), true);
+        return view('personal.editUbi', compact('ubicaciones', 'paisesCiudades'));
     }
 
     /**

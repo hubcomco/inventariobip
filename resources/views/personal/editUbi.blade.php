@@ -33,8 +33,13 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="vc_pais">País</label>
-                            <input type="text" id="vc_pais" name="vc_pais" value="{{ $ubicaciones->vc_pais }}" class="form-control" required>
+                            <label for="vc_pais">Países</label>
+                            <select id="vc_pais" name="vc_pais" class="form-control" required>
+                                <option value="">Seleccione un País</option>
+                                @foreach(array_keys($paisesCiudades) as $pais)
+                                    <option value="{{ $pais }}">{{ $pais }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="vc_ciudad">Ciudad</label>

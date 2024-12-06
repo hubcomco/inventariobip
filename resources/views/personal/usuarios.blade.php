@@ -63,6 +63,15 @@
                             <label for="password_confirmation">Confirmar Contraseña</label>
                             <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label for="rol_id">Rol</label>
+                            <select id="rol_id" name="rol_id" class="form-control" required>
+                                <option value="">Seleccione un Rol</option>
+                                @foreach ($roles as $rol)
+                                    <option value="{{ $rol->i_pk_id }}">{{ $rol->vc_rol }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button id="Btnactividad" type="submit" class="btn mt-3">Crear Usuario</button>
                     </form>                    
                 </div>
@@ -78,6 +87,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Correo Electrónico</th>
+                        <th>Rol Asignado</th>
                         <th colspan="2" style="text-align: center;">Opciones disponibles</th>
                     </tr>
                 </thead>
@@ -86,6 +96,7 @@
                         <tr>
                             <td>{{ $usuario->name }}</td>
                             <td>{{ $usuario->email }}</td>
+                            <td>{{ $usuario->role->vc_rol ?? 'Sin Rol' }}</td>
                             <td><a href="{{ route('personal.usuarios.edit', ['id' => $usuario->id]) }}" class="btn btn-edit">Editar</a></td>
                             <td>
                                 <form action="{{ route('personal.usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
@@ -118,7 +129,7 @@
         <div class="col-md-6">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
+                <div class="card-header py-3 d-flex flex-row justify-content-around">
                     <h6 class="m-0 font-weight-bold text-dark">Creación de Roles</h6>
                 </div>
                 <!-- Card Body -->

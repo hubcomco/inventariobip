@@ -13,4 +13,10 @@ class Rol extends Model
     protected $fillable = [ 
         'vc_rol', 
     ];
+
+    //Obtener todos los usuarios que tienen un rol específico
+    public function users(){
+    //Uno a muchos
+    return $this->hasMany(User::class, 'rol_id'); 
+    }
 }

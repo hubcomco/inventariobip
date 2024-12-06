@@ -116,11 +116,13 @@
                             <td>{{ $historial->vc_observaciones }}</td>
                             <td>{{ $historial->d_fecha_observaciones }}</td>
                             <td><a href="{{ route('historial.edit', ['id' => $historial->i_pk_id]) }}" class="btn btn-edit">Editar</a></td>    
-                            <form action="{{ route('historial.destroy', $historial->i_pk_id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
-                            </form>
+                            <td>
+                                <form action="{{ route('historial.destroy', $historial->i_pk_id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

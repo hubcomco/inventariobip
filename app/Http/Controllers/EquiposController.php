@@ -41,8 +41,8 @@ class EquiposController extends Controller
             'dec_costo_equipo' => 'nullable|numeric|min:0',
             'vc_estado_equipo' => 'required|string|max:100',
             'vc_garantia_equipo' => 'nullable|string|max:100',
-            'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicaciones,i_pk_id', // Clave foránea debe existir
-            'i_fk_id_empleado' => 'nullable|integer|exists:empleados,i_pk_id', // Clave foránea debe existir
+            'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicacion,i_pk_id', // Clave foránea debe existir
+            'i_fk_id_empleado' => 'nullable|integer|exists:empleado,i_pk_id', // Clave foránea debe existir
         ]);
         // Crear un nuevo equipo con los datos validados
         Equipo::create($validatedData);

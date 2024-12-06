@@ -43,17 +43,23 @@
                     <form action="{{ route('ubicaciones.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="vc_pais">País</label>
-                                    <input id="vc_pais" name="vc_pais" type="text" class="form-control" required>
+                                    <label for="vc_pais">Países</label>
+                                    <select id="vc_pais" name="vc_pais" class="form-control" required>
+                                        <option value="">Seleccione un País</option>
+                                        @foreach(array_keys($paisesCiudades) as $pais)
+                                            <option value="{{ $pais }}">{{ $pais }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="vc_ciudad">Ciudad</label>
-                                    <input id="vc_ciudad" name="vc_ciudad" type="text" class="form-control" required>
-                                    <small id="emailError" class="text-danger" style="display:none;"></small>
+                                    <label for="vc_ciudad">Ciudades</label>
+                                    <select id="vc_ciudad" name="vc_ciudad" class="form-control" required>
+                                        <option value="">Seleccione una Ciudad</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +121,23 @@
             } else { 
                 $('#btnVerUsuario').text('Registrar Ubicación'); 
             } 
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var paisesCiudades = @json($paisesCiudades);
+
+        // Manejar el cambio en el select de países
+        $('#vc_pais').on('change', function () {
+            var pais = $(this).val();
+            var ciudades = paisesCiudades[pais] || []; // Obtener las ciudades del país seleccionado
+
+            // Limpiar y llenar el select de ciudades
+            $('#vc_ciudad').empty().append('<option value="">Seleccione una Ciudad</option>');
+            ciudades.forEach(function (ciudad) {
+                $('#vc_ciudad').append('<option value="' + ciudad + '">' + ciudad + '</option>');
+            });
         });
     });
 </script>

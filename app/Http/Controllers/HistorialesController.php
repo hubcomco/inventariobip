@@ -14,7 +14,8 @@ class HistorialesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   $equipos = Equipo::all();
+    {
+        $equipos = Equipo::all();
         $empleados = Empleado::all();
         $ubicaciones = Ubicacion::all();
         $historiales = Historial::with(['equipo', 'empleado', 'ubicaciones'])->get();
@@ -34,17 +35,16 @@ class HistorialesController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([ 
+        $validatedData = $request->validate([
             'i_fk_id_equipo' => 'required|exists:equipo,i_pk_id',
             'i_fk_id_empleado' => 'required|exists:empleado,i_pk_id',
             'i_fk_id_ubicacion' => 'required|exists:ubicacion,i_pk_id',
-            'vc_observaciones' => 'required|string|max:255', 
+            'vc_observaciones' => 'required|string|max:255',
             'd_fecha_observaciones' => 'nullable|date',
         ]);
         // Crear un nuevo rol 
-        Historial::create([$validatedData]);  
-        return redirect()->route('personal.historial')->with('success', 'Observación agregada exitosamente.'); 
-
+        Historial::create([$validatedData]);
+        return redirect()->route('personal.historial')->with('success', 'Observación agregada exitosamente.');
     }
 
     /**
@@ -77,6 +77,12 @@ class HistorialesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $historial = Historial::findOrFail($id);
+            $historial->delete();
+            return redirect()->route('personal.historial')->with('success', 'Historial eliminado exitosamente');
+        } catch (\Exception $e) {
+            return back()->withErrors('Error al eliminar: ' . $e->getMessage());
+        }
     }
 }
