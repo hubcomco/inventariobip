@@ -20,12 +20,12 @@ class Historial extends Model
     ];
 
     public function equipo(){ /*Cada historial se asocia a un equipo*/
-      return $this->belongsTo(Equipo::class, 'i_fk_id_equipo');
+      return $this->belongsTo(Equipo::class, 'i_fk_id_equipo', 'i_pk_id');
     }
     public function empleado(){ /*Cada historial se asocia a un empleado*/
-      return $this->belongsTo(Empleado::class, 'i_fk_id_empleado');
+      return $this->belongsTo(Empleado::class, 'i_fk_id_empleado', 'i_pk_id');
     }
     public function ubicaciones(){ /*Cada historial se asocia a una ubicacion*/
-      return $this->belongsTo(Ubicacion::class, 'i_fk_id_ubicacion');
+      return $this->belongsTo(Ubicacion::class, 'i_fk_id_ubicacion', 'i_pk_id');
     }
 }

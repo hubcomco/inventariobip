@@ -64,8 +64,8 @@ class EquiposController extends Controller
      */
     public function edit(string $id)
     {
-        $equipo = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
-        return view('personal.editEqui', compact('equipo'));
+        $equipos = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
+        return view('personal.editEqui', compact('equipos'));
     }
 
     /**
