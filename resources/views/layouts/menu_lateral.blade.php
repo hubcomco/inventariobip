@@ -33,7 +33,7 @@
         <div id="collapseEmpleados" class="collapse" aria-labelledby="headingEmpleados" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h class="collapse-header">Configuración:</h>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Editar</a>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Ver o Registrar</a>
             </div>
         </div>
     </li>
