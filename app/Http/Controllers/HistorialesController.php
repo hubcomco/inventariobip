@@ -40,7 +40,7 @@ class HistorialesController extends Controller
 
     public function show(string $id)
     {
-        //
+       //
     }
 
     public function edit(string $id)
@@ -51,14 +51,17 @@ class HistorialesController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
+        $request->validate([
            'vc_observaciones' => 'string|max:255',
             'd_fecha_observaciones' => 'nullable|date',
         ]);
         // Busca el historial en la base de datos
         $historial = Historial::findOrFail($id);
         // Actualiza los datos del historial
-        $historial->update($validatedData);
+        $historial->update([
+            'vc_observaciones' => $request -> vc_observaciones,
+            'd_fecha_observaciones' => $request -> d_fecha_observaciones,
+        ]);
         // Redirige a la vista con un mensaje
         return redirect()->route('personal.historial')->with('success', 'Historial actualizado exitosamente.');
     }

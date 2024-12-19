@@ -77,20 +77,20 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="vc_url_contrato">Contrato</label>
-                    <input id="vc_url_contrato" name="vc_url_contrato" type="file" class="form-control">
+                    <label for="formFile">Contrato</label>
+                    <input id="vc_url_contrato" name="vc_url_contrato" type="file" class="formFile">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="vc_url_examenes">Exámenes</label>
-                    <input id="vc_url_examenes" name="vc_url_examenes" type="file" class="form-control">
+                    <label for="formFile">Exámenes</label>
+                    <input id="vc_url_examenes" name="vc_url_examenes" type="file" class="formFile">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="vc_url_cedula">Cédula</label>
-                    <input id="vc_url_cedula" name="vc_url_cedula" type="file" class="form-control">
+                    <label for="formFile">Cédula</label>
+                    <input id="vc_url_cedula" name="vc_url_cedula" type="file" class="formFile">
                 </div>
             </div>
         </div>
