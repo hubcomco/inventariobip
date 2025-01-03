@@ -16,7 +16,7 @@ use App\Models\Ubicacion;
 //Ruta login
 Route::get('/', function () {return view('login.login');});
 //Ruta para acceder al dashboard
-Route::get('/dashboard', function () {return view('personal.index');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {return view('empleado.index');})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Ruta para mostrar el listado de empleados registrados
@@ -48,15 +48,15 @@ Route::delete('/equipos/{id}', [EquiposController::class, 'destroy'])->name('equ
 
 
 //Ruta para ver los usuarios registrados
-Route::get('/usuarios', [UserController::class, 'index'])->name('personal.usuarios');
+Route::get('/usuarios', [UserController::class, 'index'])->name('Usuario.usuarios');
 //Ruta para registrar los Usuarios
-Route::post('/usuarios/store',[UserController::class, 'store'])->name('personal.usuarios.store');
+Route::post('/usuarios/store',[UserController::class, 'store'])->name('Usuario.usuarios.store');
 //Ruta para editar los Usuarios
-Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('personal.usuarios.edit');
+Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('Usuario.usuarios.edit');
 //Ruta para eliminar los Usuarios
-Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('personal.usuarios.destroy');
+Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('Usuario.usuarios.destroy');
 //Ruta para actualizar los usuarios
-Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('personal.usuarios.update');
+Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('Usuario.usuarios.update');
 
 //Ruta para registrar el Rol
 Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
@@ -68,7 +68,7 @@ Route::get('/roles/{id}/edit', [RolController::class, 'edit'])->name('roles.edit
 Route::delete('/roles/{id}', [RolController::class, 'destroy'])->name('roles.destroy'); 
 
 //Ruta para ver el Historial
-Route::get('/historial', [HistorialesController::class, 'index'])->name('personal.historial');
+Route::get('/historial', [HistorialesController::class, 'index'])->name('Historial.historial');
 //Ruta para registrar las observaciones en historial
 Route::post('/historial/store',[HistorialesController::class, 'store'])->name('historial.store');
 //Ruta para ver editar el Historial
@@ -79,7 +79,7 @@ Route::put('/historial/{id}', [HistorialesController::class, 'update'])->name('h
 Route::delete('/historial/{id}', [HistorialesController::class, 'destroy'])->name('historial.destroy');
 
 //Ruta para ver las Ubicaciones
-Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('personal.ubicaciones');
+Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('Ubicacion.ubicaciones');
 //Ruta para registrar las Ubicaciones
 Route::post('/ubicaciones/store', [UbicacionesController::class, 'store'])->name('ubicaciones.store');
 //Ruta para editar las ubicaciones

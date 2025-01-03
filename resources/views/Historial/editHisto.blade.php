@@ -70,7 +70,7 @@
                         @csrf
                         @method('PUT')
                         <button type="submit" class="btn">Actualizar</button>
-                        <a href="{{ route('personal.historial') }}" class="btn">Regresar</a>
+                        <a href="{{ route('Historial.historial') }}" class="btn">Regresar</a>
                     </form>
                 </div>
             </div>

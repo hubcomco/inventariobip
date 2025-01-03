@@ -44,7 +44,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('personal.usuarios.store') }}" method="POST">
+                    <form action="{{ route('Usuario.usuarios.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre</label>
@@ -97,9 +97,9 @@
                             <td>{{ $usuario->name }}</td>
                             <td>{{ $usuario->email }}</td>
                             <td>{{ $usuario->role->vc_rol ?? 'Sin Rol' }}</td>
-                            <td><a href="{{ route('personal.usuarios.edit', ['id' => $usuario->id]) }}" class="btn btn-edit">Editar</a></td>
+                            <td><a href="{{ route('Usuario.usuarios.edit', ['id' => $usuario->id]) }}" class="btn btn-edit">Editar</a></td>
                             <td>
-                                <form action="{{ route('personal.usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('Usuario.usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-delete">Eliminar</button>

@@ -50,7 +50,7 @@
                             <input type="text" id="vc_direccion" name="vc_direccion" value="{{ $ubicaciones->vc_direccion }}" class="form-control" required>
                         </div>
                         <button type="submit" class="btn">Actualizar</button>
-                        <a href="{{ route('personal.ubicaciones') }}" class="btn">Regresar a Ubicaciones</a>
+                        <a href="{{ route('Ubicacion.ubicaciones') }}" class="btn">Regresar a Ubicaciones</a>
                     </form>
                 </div>
             </div>

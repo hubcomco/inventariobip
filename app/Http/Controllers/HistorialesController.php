@@ -16,7 +16,7 @@ class HistorialesController extends Controller
         $empleados = Empleado::all(); 
         $ubicaciones = Ubicacion::all(); 
         $historiales = Historial::with(['equipo', 'empleado', 'ubicaciones'])->get();
-        return view('personal.historial', compact('historiales', 'equipos', 'empleados', 'ubicaciones'));
+        return view('Historial.historial', compact('historiales', 'equipos', 'empleados', 'ubicaciones'));
     }
 
    public function create()
@@ -35,7 +35,7 @@ class HistorialesController extends Controller
         ]);
         // Crear un nuevo historial 
         Historial::create([$validatedData]);
-        return redirect()->route('personal.historial')->with('success', 'Observación agregada exitosamente.');
+        return redirect()->route('Historial.historial')->with('success', 'Observación agregada exitosamente.');
     }
 
     public function show(string $id)
@@ -46,7 +46,7 @@ class HistorialesController extends Controller
     public function edit(string $id)
     {
         $historial = Historial::findOrFail($id);
-        return view('personal.editHisto', compact('historial'));
+        return view('Historial.editHisto', compact('historial'));
     }
 
     public function update(Request $request, string $id)
@@ -63,7 +63,7 @@ class HistorialesController extends Controller
             'd_fecha_observaciones' => $request -> d_fecha_observaciones,
         ]);
         // Redirige a la vista con un mensaje
-        return redirect()->route('personal.historial')->with('success', 'Historial actualizado exitosamente.');
+        return redirect()->route('Historial.historial')->with('success', 'Historial actualizado exitosamente.');
     }
 
     public function destroy(string $id)
@@ -71,7 +71,7 @@ class HistorialesController extends Controller
         try {
             $historial = Historial::findOrFail($id);
             $historial->delete();
-            return redirect()->route('personal.historial')->with('success', 'Historial eliminado exitosamente');
+            return redirect()->route('Historial.historial')->with('success', 'Historial eliminado exitosamente');
         } catch (\Exception $e) {
             return back()->withErrors('Error al eliminar: ' . $e->getMessage());
         }

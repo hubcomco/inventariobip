@@ -20,7 +20,7 @@
                     <form action="{{ route('equipos.update', $equipos->i_pk_id)}}" method="POST">
                         @csrf
                         @method('PUT')
-                        @include('personal.equipos')
+                        @include('equipo.equipos')
                     </form>
                 </div>
             </div>

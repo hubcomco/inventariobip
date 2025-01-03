@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="bold">Empleados BIP</h1>
+            <h1 class="bold">Edición Usuarios BIP</h1>
         </div>
     </div>
 
@@ -26,20 +26,42 @@
     @endif
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Edición empleado</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Editar Usuario</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('empleados.update', $empleado->i_pk_id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Usuario.usuarios.update', $usuario->id) }}" method="POST" class="button-group">
                         @csrf
                         @method('PUT')
-                        @include('personal.form.empleados')
+                        <div class="form-group">
+                            <label for="name">Nombre del Usuario</label>
+                            <input type="text" id="name" name="name" value="{{ $usuario->name }}" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo del Usuario</label>
+                            <input type="text" id="email" name="email" value="{{ $usuario->email }}" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rol_id">Rol del Usuario</label>
+                            <select id="rol_id" name="rol_id" class="form-control" required>
+                                <option value="" disabled>Seleccionar un rol</option>
+                                @foreach($roles as $rol)
+                                    <option value="{{ $rol->i_pk_id }}" {{ $usuario->rol_id == $rol->i_pk_id ? 'selected' : '' }}>
+                                        {{ $rol->vc_rol }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn">Actualizar Usuario</button>
+                        <a href="{{ route('Usuario.usuarios') }}" class="btn">Regresar a Usuarios</a>
                     </form>
-                </div>
+                </div>                
             </div>
         </div>
     </div>

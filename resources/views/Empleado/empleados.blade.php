@@ -1,5 +1,6 @@
 <head>
     <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 </head>
 
     @csrf

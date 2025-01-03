@@ -16,6 +16,8 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "bcryptjs": "^2.4.3"
+        "bcryptjs": "^2.4.3",
+        "datatables.net": "^2.1.8",
+        "datatables.net-dt": "^2.1.8"
     }
 }

@@ -15,7 +15,7 @@ class UbicacionesController extends Controller
         $ubicaciones=Ubicacion::all();
         // Cargar el archivo json
         $paisesCiudades = json_decode(file_get_contents(storage_path('app/paises_ciudades.json')), true);
-        return view('personal.ubicaciones', compact('ubicaciones', 'paisesCiudades'));
+        return view('Ubicacion.ubicaciones', compact('ubicaciones', 'paisesCiudades'));
     }
 
     /**
@@ -38,7 +38,7 @@ class UbicacionesController extends Controller
             ]);
             // Crear un nuevo equipo con los datos validados
         Ubicacion::create($validatedData);
-        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación creada exitosamente.');    
+        return back()->with('success', 'Ubicación creada exitosamente.');    
     }
 
     /**
@@ -56,7 +56,7 @@ class UbicacionesController extends Controller
     {
         $ubicaciones = Ubicacion::findOrFail($id);
         $paisesCiudades = json_decode(file_get_contents(storage_path('app/paises_ciudades.json')), true);
-        return view('personal.editUbi', compact('ubicaciones', 'paisesCiudades'));
+        return view('Ubicacion.editUbi', compact('ubicaciones', 'paisesCiudades'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UbicacionesController extends Controller
         // Actualiza los datos del usuario
         $ubicaciones->update($validatedData);
         // Redirige a la lista de usuarios con un mensaje
-        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación actualizada exitosamente.');
+        return redirect()->route('Ubicacion.ubicaciones')->with('success', 'Ubicación actualizada exitosamente.');
     }
 
     /**
@@ -85,10 +85,10 @@ class UbicacionesController extends Controller
     {
         $ubicaciones = Ubicacion::findOrFail($id);
 
-        // Elimina el rol
+        // Elimina la ubicación
         $ubicaciones->delete();
 
         // Redirige de vuelta con un mensaje de éxito
-        return redirect()->route('personal.ubicaciones')->with('success', 'Ubicación eliminada exitosamente.');
+        return redirect()->route('Ubicacion.ubicaciones')->with('success', 'Ubicación eliminada exitosamente.');
     }
 }

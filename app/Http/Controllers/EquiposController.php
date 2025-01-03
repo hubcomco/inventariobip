@@ -15,7 +15,7 @@ class EquiposController extends Controller
     public function index()
     {
         $equipos = Equipo::all();
-        return view('personal.equipos', compact('equipos'));
+        return view('equipo.equipos', compact('equipos'));
     }
 
     /**
@@ -65,7 +65,7 @@ class EquiposController extends Controller
     public function edit(string $id)
     {
         $equipos = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
-        return view('personal.editEqui', compact('equipos'));
+        return view('equipo.editEqui', compact('equipos'));
     }
 
     /**

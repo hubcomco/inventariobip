@@ -41,7 +41,7 @@
                             <input type="text" id="vc_rol" name="vc_rol" value="{{ $rol->vc_rol }}" class="form-control" required>
                         </div>
                         <button type="submit" class="btn">Actualizar</button>
-                        <a href="{{ route('personal.usuarios') }}" class="btn">Regresar a Usuarios</a>
+                        <a href="{{ route('Usuario.usuarios') }}" class="btn">Regresar a Usuarios</a>
                     </form>
                 </div>                
             </div>

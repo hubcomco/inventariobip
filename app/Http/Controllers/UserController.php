@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $usuarios = User::all(); // Obtener todos los usuarios 
         $roles = Rol::all(); // Obtener todos los roles 
-        return view('personal.usuarios', compact('usuarios', 'roles'));
+        return view('Usuario.usuarios', compact('usuarios', 'roles'));
     }
 
 
@@ -33,7 +33,7 @@ class UserController extends Controller
             'rol_id' => $validatedData['rol_id'], // Guardar el rol
         ]);
 
-        return redirect()->route('personal.usuarios')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('Usuario.usuarios')->with('success', 'Usuario creado exitosamente.');
     }
 
 
@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $usuario = User::findOrFail($id);
         $roles = Rol::all();
-        return view('personal.form.editUser', compact('usuario' , 'roles'));
+        return view('Usuario.editUser', compact('usuario' , 'roles'));
     }
 
 
@@ -52,7 +52,7 @@ class UserController extends Controller
         // Elimina el usuario
         $usuario->delete();
         // Redirige de vuelta con un mensaje 
-        return redirect()->route('personal.usuarios')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('Usuario.usuarios')->with('success', 'Usuario eliminado exitosamente.');
     }
 
     public function update(Request $request, string $id)
@@ -68,7 +68,7 @@ class UserController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->update($validatedData);
     
-        return redirect()->route('personal.usuarios')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('Usuario.usuarios')->with('success', 'Usuario actualizado exitosamente.');
     }
     
 }

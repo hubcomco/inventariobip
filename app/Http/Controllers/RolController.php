@@ -12,7 +12,7 @@ class RolController extends Controller
         ]);
         // Crear un nuevo rol 
         Rol::create([ 'vc_rol' => $request->vc_rol, ]);  
-        return redirect()->route('personal.usuarios')->with('success', 'Rol creado exitosamente.'); 
+        return redirect()->route('Usuario.usuarios')->with('success', 'Rol creado exitosamente.'); 
     }
 
     public function edit(string $id)
@@ -20,7 +20,7 @@ class RolController extends Controller
         // Busca el rol por su ID
         $rol = Rol::findOrFail($id);
         // Retorna una vista específica para editar roles
-        return view('personal.editRol', compact('rol'));
+        return view('Usuario.editRol', compact('rol'));
     }
 
 
@@ -30,7 +30,7 @@ class RolController extends Controller
         $rol->delete();
 
         // Redirige de vuelta con un mensaje de éxito
-        return redirect()->route('personal.usuarios')->with('success', 'Rol eliminado exitosamente.');
+        return redirect()->route('Usuario.usuarios')->with('success', 'Rol eliminado exitosamente.');
     }
 
 
@@ -45,7 +45,7 @@ class RolController extends Controller
             'vc_rol' => $request->vc_rol,
         ]);
         // Redirigir a la vista de roles con un mensaje de éxito
-        return redirect()->route('personal.usuarios')->with('success', 'Rol actualizado exitosamente.');
+        return redirect()->route('Usuario.usuarios')->with('success', 'Rol actualizado exitosamente.');
     }
 
 }

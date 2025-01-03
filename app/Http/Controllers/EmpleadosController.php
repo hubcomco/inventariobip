@@ -15,7 +15,7 @@ class EmpleadosController extends Controller
     public function index()
     {   
         $empleados = Empleado::all();
-        return view('personal.index', compact('empleados'));
+        return view('Empleado.index', compact('empleados'));
     }
 
     /**
@@ -68,7 +68,7 @@ class EmpleadosController extends Controller
     public function dashboard(){
          //Se crea el metodo para obtener los datos de los empleados y ponerlos en el panel
         $empleados = Empleado::all();
-        return view('personal.index', compact('empleados'));
+        return view('Empleado.index', compact('empleados'));
     }
 
 
@@ -86,7 +86,7 @@ class EmpleadosController extends Controller
     public function edit(int $id)
     {   
        $empleado = Empleado::findOrFail($id);
-       return view('personal.edit', compact('empleado'));  
+       return view('Empleado.edit', compact('empleado'));  
     }
 
     /**
