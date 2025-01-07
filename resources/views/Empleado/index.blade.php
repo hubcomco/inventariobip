@@ -1,9 +1,4 @@
 @extends('layouts.admin')
-<head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-</head>
 
 @section('content')
     <div class="row">
@@ -71,7 +66,8 @@
                         <th>Archivo Contrato</th>
                         <th>Archivo Exámenes</th>
                         <th>Archivo Cédula</th>
-                        <th colspan="2" style="text-align: center;">Opciones Disponibles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -104,19 +100,9 @@
         </div>   
     </div>
 @endsection
-  
+
 <!--Enlace a la biblioteca de jQuery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#empleadosTabla').DataTable({
-            responsive: true, // Hacer que la tabla sea adaptable
-            paging: true,    // Habilitar paginación
-            searching: true, // Habilitar búsqueda
-            ordering: true   // Habilitar ordenamiento
-        });
-    });
-</script>
 <script>
     $(document).ready(function() {
         // Se activa el evento al hacer clic en el boton para mostrar el formulario u ocultarlo
@@ -144,5 +130,17 @@
             }
         });
     });
+    $(document).ready(function () {
+        $('#empleadosTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    });
 </script>
+
 

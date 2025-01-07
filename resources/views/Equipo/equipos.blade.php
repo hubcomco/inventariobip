@@ -157,7 +157,7 @@
     <div class="panel mt-5">
         <h3>Lista de Equipos</h3>
         <div class="table-responsive">
-            <table class="table tabla-inventario">
+            <table id="equiposTabla" class="table tabla-inventario">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -170,7 +170,8 @@
                         <th>Costo</th>
                         <th>Estado</th>
                         <th>Garantia</th>
-                        <th colspan="2" style="text-align: center;">Opciones</th>
+                        <th>Editar</th>
+                        <th>Eliminar</the=>
                     </tr>
                 </thead>
                 <tbody>
@@ -217,5 +218,17 @@
                 $('#btnVerContenido').text('Abrir Formulario de Registro'); 
             } 
         });
-    });    
+    });
+    
+    $(document).ready(function () {
+        $('#equiposTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    });
 </script>

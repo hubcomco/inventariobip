@@ -21,6 +21,16 @@
     <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
     <link href="{{ url('css/admin.css')}}" rel="stylesheet">
     <link href="{{ url('css/sb-admin-2.min.css')}}" rel="stylesheet">  
+
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -90,9 +100,7 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ url('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -100,23 +108,5 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ url('js/sb-admin-2.min.js')}}"></script>
-
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-
 </body>
-<!--<script>
-    $(document).ready(function() {
-        $('.tabla-inventario').DataTable({
-            paging: true,          // Habilita la paginación
-            searching: true,       // Habilita la barra de búsqueda
-            ordering: true,        // Habilita la ordenación
-        });
-
-        $('#vc_email').on('change', function(){
-            var email = $(this).val(); 
-            alert('El correo electrónico ingresado es: ' + email);
-        })
-    });
-</script>
--->
 </html>

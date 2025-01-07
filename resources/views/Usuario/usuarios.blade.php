@@ -82,18 +82,21 @@
     <div class="panel mt-5">
         <h3>Lista de Usuarios</h3>
         <div class="table-responsive">
-            <table class="table tabla-inventario">
+            <table id="usuariosTabla" class="table tabla-inventario">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo Electrónico</th>
                         <th>Rol Asignado</th>
-                        <th colspan="2" style="text-align: center;">Opciones disponibles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($usuarios as $usuario)
                         <tr>
+                            <td>{{ $usuario->id }}</td>
                             <td>{{ $usuario->name }}</td>
                             <td>{{ $usuario->email }}</td>
                             <td>{{ $usuario->role->vc_rol ?? 'Sin Rol' }}</td>
@@ -115,7 +118,7 @@
     <!-- Gestión de Roles -->
     <div class="row1">
         <div class="col-md-8">
-            <h1 class="bold">Gestión de Roles</h1>
+            <h1 class="bold mt-5">Gestión de Roles</h1>
         </div>
     </div>
 
@@ -150,12 +153,13 @@
     <div class="panel mt-5">
         <h3>Lista de Roles</h3>
         <div class="table-responsive">
-            <table class="table tabla-inventario">
+            <table id="rolesTabla" class="table tabla-inventario">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Rol</th>
-                        <th colspan="2" style="text-align: center;">Opciones disponibles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -213,6 +217,30 @@
             } else {
                 $('#emailError').hide();
                 $('#Btnactividad').removeAttr('disabled');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#usuariosTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#rolesTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
             }
         });
     });

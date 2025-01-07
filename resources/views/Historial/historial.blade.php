@@ -94,7 +94,7 @@
     </div>
     <div class="panel mt-2">
         <div class="table-responsive">
-            <table class="table tabla-inventario">
+            <table id="historialTabla" class="table tabla-inventario">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -103,7 +103,8 @@
                         <th>ID_Ubicación</th>
                         <th>Observaciones</th>
                         <th>Fecha</th>
-                        <th colspan="2" style="text-align: center;">Opciones Disponibles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -142,6 +143,18 @@
             } else { 
                 $('#btnVerForm').text('Abrir Formulario'); 
             } 
+        });
+    });
+
+    $(document).ready(function () {
+        $('#historialTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
         });
     });
 </script>

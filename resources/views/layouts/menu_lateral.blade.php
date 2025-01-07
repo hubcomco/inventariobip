@@ -40,15 +40,15 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEquipos"
-            aria-expanded="true" aria-controls="collapseEquipos">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEquipos" aria-expanded="true" aria-controls="collapseEquipos">
             <i class="bi bi-display"></i>
             <span>Equipos</span>
         </a>
-        <div id="collapseEquipos" class="collapse" aria-labelledby="headingEquipos"
-            data-parent="#accordionSidebar">
+        <div id="collapseEquipos" class="collapse" aria-labelledby="headingEquipos" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('equipos.index')}}">Registrar</a>
+                <h class="collapse-header">Opciones de Equipos:</h>
+                <a class="collapse-item" href="{{ route('equipos.index') }}">Registrar</a>
+                <a class="collapse-item" href="{{ route('TipoEquipo.index') }}">Tipología</a>
             </div>
         </div>
     </li>

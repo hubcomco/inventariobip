@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('rol_id')->nullable();
-            $table->foreign('rol_id')->references('i_pk_id')->on('rol')->onDelete('set null');
+        Schema::create('tipos_equipos', function (Blueprint $table) {
+            $table->id('i_pk_id');
+            $table->string('vc_tipo');
+            $table->timestamps();
         });
     }
 
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('tipos_equipos');
     }
 };

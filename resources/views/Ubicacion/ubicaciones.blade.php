@@ -76,14 +76,15 @@
 
     <div class="panel mt-2">
         <div class="table-responsive">
-            <table class="table tabla-inventario">
+            <table id="ubicacionTabla" class="table tabla-inventario">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>País</th>
                         <th>Ciudad</th>
                         <th>Dirección</th>
-                        <th colspan="2" style="text-align: center;">Opciones disponibles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,6 +139,18 @@
             ciudades.forEach(function (ciudad) {
                 $('#vc_ciudad').append('<option value="' + ciudad + '">' + ciudad + '</option>');
             });
+        });
+    });
+
+    $(document).ready(function () {
+        $('#ubicacionTabla').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
         });
     });
 </script>

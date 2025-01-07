@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\HistorialesController;
 use App\Http\Controllers\UbicacionesController;
+use App\Http\Controllers\TipoEquipoController;
 use App\Models\Equipo;
 use App\Models\Historial;
 use App\Models\Rol;
@@ -46,6 +47,8 @@ Route::put('/equipos/{id}', [EquiposController::class, 'update'])->name('equipos
 //Ruta pra eliminar los equipos
 Route::delete('/equipos/{id}', [EquiposController::class, 'destroy'])->name('equipos.destroy');
 
+//Rustas para Tipos de Equipo
+Route::resource('TipoEquipo', TipoEquipoController::class);
 
 //Ruta para ver los usuarios registrados
 Route::get('/usuarios', [UserController::class, 'index'])->name('Usuario.usuarios');

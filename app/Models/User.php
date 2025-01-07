@@ -17,10 +17,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
-        'rol_id',
     ];
 
     /**
@@ -43,9 +43,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    //acceder al rol asignado a un usuario  
-    public function role(){
-        return $this->belongsTo(Rol::class, 'rol_id', 'i_pk_id'); 
-    }
 
 }
