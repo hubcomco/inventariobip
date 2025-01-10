@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Equipo;
 use App\Models\Ubicacion;
 use App\Models\Empleado;
+use App\Models\TipoEquipo;
 use Illuminate\Http\Request;
 
 class EquiposController extends Controller
@@ -15,7 +16,8 @@ class EquiposController extends Controller
     public function index()
     {
         $equipos = Equipo::all();
-        return view('equipo.equipos', compact('equipos'));
+        $tipos = TipoEquipo::all();
+        return view('equipo.equipos', compact('equipos','tipos'));
     }
 
     /**
@@ -23,7 +25,6 @@ class EquiposController extends Controller
      */
     public function create()
     {
-        
     }
     /**
      * Store a newly created resource in storage.
@@ -43,6 +44,7 @@ class EquiposController extends Controller
             'vc_garantia_equipo' => 'nullable|string|max:100',
             'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicacion,i_pk_id', // Clave foránea debe existir
             'i_fk_id_empleado' => 'nullable|integer|exists:empleado,i_pk_id', // Clave foránea debe existir
+            'i_fk_id_tipo' => 'required|exists:tipos_equipos,i_pk_id', // Validación para el tipo de equipo
         ]);
         // Crear un nuevo equipo con los datos validados
         Equipo::create($validatedData);
@@ -63,9 +65,10 @@ class EquiposController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $equipos = Equipo::findOrFail($id); // Encuentra el equipo o lanza una excepción
-        return view('equipo.editEqui', compact('equipos'));
+    {   
+        $equipo = Equipo::findOrFail($id); 
+        $tipos = TipoEquipo::all(); 
+        return view('equipo.editEqui', compact('equipo', 'tipos'));
     }
 
     /**
@@ -85,6 +88,7 @@ class EquiposController extends Controller
             'vc_garantia_equipo' => 'nullable|string|max:100',
             'i_fk_id_ubicacion' => 'nullable|integer|exists:ubicacion,i_pk_id',
             'i_fk_id_empleado' => 'nullable|integer|exists:empleado,i_pk_id',
+            'i_fk_id_tipo' => 'required|integer|exists:tipos_equipos,i_pk_id',
         ]);
 
         try {

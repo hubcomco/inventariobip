@@ -1,6 +1,3 @@
-<head>
-    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
-</head>
 @extends('layouts.admin')
 @section('content')
     @if ($errors->any())
@@ -29,11 +26,11 @@
         </div>
     </div>
     <div class="row" id="verHisto" style="display:none;">
-        <div class="col-md-9">
+        <div class="col-md-6">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Historiales BIP</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Historial</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -73,20 +70,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="vc_observaciones">Contenido</label>
-                                    <input id="vc_observaciones" name="vc_observaciones" type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="d_fecha_observaciones">Fecha Observación</label>
-                                    <input id="d_fecha_observaciones" name="d_fecha_observaciones" type="date" class="form-control" required>
-                                </div>
-                            </div>
                         </div>
-                        <button id="Btnactividad" type="submit" class="btn mt-3">Registrar Observación</button>
+                        <button id="Btnactividad" type="submit" class="btn mt-3">Registrar Historial</button>
                     </form>                    
                 </div>
             </div>
@@ -102,7 +87,6 @@
                         <th>ID_Empleado</th>
                         <th>ID_Ubicación</th>
                         <th>Observaciones</th>
-                        <th>Fecha</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -113,15 +97,19 @@
                             <td>{{ $historial->i_pk_id }}</td>
                             <td>{{ $historial->equipo->vc_nombre_equipo ?? 'N/A' }}</td>
                             <td>{{ $historial->empleado->vc_nombre ?? 'N/A' }}</td>
-                            <td>{{ $historial->ubicaciones->vc_nombre ?? 'N/A' }}</td>
-                            <td>{{ $historial->vc_observaciones }}</td>
-                            <td>{{ $historial->d_fecha_observaciones }}</td>
+                            <td>{{ $historial->ubicaciones->vc_nombre ?? 'N/A' }}</td> 
+                            <td>
+                                <a href="{{ route('HistorialObservacion.index', ['id' => $historial->i_pk_id]) }}" class="btn">
+                                    Agregar
+                                </a>
+                            </td>
+                            
                             <td><a href="{{ route('historial.edit', ['id' => $historial->i_pk_id]) }}" class="btn btn-edit">Editar</a></td>    
                             <td>
                                 <form action="{{ route('historial.destroy', $historial->i_pk_id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
+                                    <button type="submit" class="btn btn-delete">Eliminar</button> 
                                 </form>
                             </td>
                         </tr>
@@ -155,6 +143,13 @@
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
             }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#i_fk_id_equipo, #i_fk_id_empleado, #i_fk_id_ubicacion').select2({
+            placeholder: "Seleccione una opción",
+            allowClear: true 
         });
     });
 </script>

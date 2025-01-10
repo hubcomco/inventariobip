@@ -22,7 +22,8 @@ class Equipo extends Model
         'vc_estado_equipo',	
         'vc_garantia_equipo',
         'i_fk_id_ubicacion',
-        'i_fk_id_empleado'
+        'i_fk_id_empleado',
+        'i_fk_id_tipo'
     ];
 
     public function historial(){ /*Cada equipo puede tener varios registros en el historial*/
@@ -35,5 +36,13 @@ class Equipo extends Model
 
     public function ubicaciones(){ /*Cada equipo se asocia a una ubicacion*/
         return $this->belongsTo(Ubicacion::class, 'i_fk_id_ubicacion');
+    }
+
+    public function tipoEquipo(){/*Cada equipo tiene un tipo*/
+        return $this->belongsTo(TipoEquipo::class, 'i_fk_id_tipo', 'i_pk_id');
+    }
+
+    public function asignaciones(){/*Cada empleado tiene un equipo asignado*/
+        return $this->hasMany(Asignacion::class, 'i_fk_id_equipo', 'i_pk_id');
     }
 }

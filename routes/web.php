@@ -9,10 +9,8 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\HistorialesController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\TipoEquipoController;
-use App\Models\Equipo;
-use App\Models\Historial;
-use App\Models\Rol;
-use App\Models\Ubicacion;
+use App\Http\Controllers\HistorialObservacionController;
+use App\Http\Controllers\AsignacionController;
 
 //Ruta login
 Route::get('/', function () {return view('login.login');});
@@ -47,8 +45,12 @@ Route::put('/equipos/{id}', [EquiposController::class, 'update'])->name('equipos
 //Ruta pra eliminar los equipos
 Route::delete('/equipos/{id}', [EquiposController::class, 'destroy'])->name('equipos.destroy');
 
-//Rustas para Tipos de Equipo
+//Rutas para Tipos de Equipo
 Route::resource('TipoEquipo', TipoEquipoController::class);
+
+//Rutas asignacion de equipo
+Route::get('/asignaciones/{equipoId}/create', [AsignacionController::class, 'create'])->name('asignaciones.create');
+Route::post('/asignaciones/{equipoId}', [AsignacionController::class, 'store'])->name('asignaciones.store');
 
 //Ruta para ver los usuarios registrados
 Route::get('/usuarios', [UserController::class, 'index'])->name('Usuario.usuarios');
@@ -80,6 +82,13 @@ Route::get('/historial/{id}/edit', [HistorialesController::class, 'edit'])->name
 Route::put('/historial/{id}', [HistorialesController::class, 'update'])->name('historial.update');
 //Ruta para eliminar el historial 
 Route::delete('/historial/{id}', [HistorialesController::class, 'destroy'])->name('historial.destroy');
+
+//Rustas Historial Observaciones
+Route::get('HistorialObservacion/{id}', [HistorialObservacionController::class, 'index'])->name('HistorialObservacion.index'); // Mostrar observaciones por historial
+Route::post('HistorialObservacion/store', [HistorialObservacionController::class, 'store'])->name('HistorialObservacion.store'); // Registrar una observación
+Route::get('HistorialObservacion/{id}/edit', [HistorialObservacionController::class, 'edit'])->name('HistorialObservacion.edit'); // Editar observación
+Route::put('HistorialObservacion/{id}', [HistorialObservacionController::class, 'update'])->name('HistorialObservacion.update'); // Actualizar observación
+Route::delete('HistorialObservacion/{id}', [HistorialObservacionController::class, 'destroy'])->name('HistorialObservacion.destroy'); // Eliminar observación
 
 //Ruta para ver las Ubicaciones
 Route::get('/ubicaciones', [UbicacionesController::class, 'index'])->name('Ubicacion.ubicaciones');

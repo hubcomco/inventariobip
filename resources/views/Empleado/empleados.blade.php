@@ -2,7 +2,6 @@
     <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 </head>
-
     @csrf
     <div class="form-group">
         <!-- Nombres y Apellidos en la misma fila -->
@@ -97,5 +96,7 @@
         </div>
 
         <!-- Botón de envío -->
-        <button type="submit" class="btn mt-3" id="Btnactividad">Guardar y enviar</button>
+        <button type="submit" class="btn" id="Btnactividad">Actualizar</button>
+        <a href="{{ route('empleados.index') }}" class="btn ">Regresar</a>
     </div>
+

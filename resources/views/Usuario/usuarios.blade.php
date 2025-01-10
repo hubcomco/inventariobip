@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button id="btnVerUsuario" class="btn mb-4">Abrir Formulario de Usuario</button>
+            <button id="btnVerUsuario" class="btn mb-4">Abrir Formulario</button>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Creación de Usuario</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Creación</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -133,7 +133,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Creación de Roles</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Creación</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -192,7 +192,7 @@
             if ($('#verUsuario').is(':visible')) { 
                 $('#btnVerUsuario').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerUsuario').text('Abrir Formulario de Usuario'); 
+                $('#btnVerUsuario').text('Abrir Formulario'); 
             } 
         });
 
@@ -202,7 +202,7 @@
             if ($('#verRol').is(':visible')) { 
                 $('#btnVerRol').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerRol').text('Abrir Formulario de Rol'); 
+                $('#btnVerRol').text('Abrir Formulario'); 
             } 
         });
 

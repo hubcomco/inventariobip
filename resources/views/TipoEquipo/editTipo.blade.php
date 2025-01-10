@@ -1,11 +1,8 @@
-<head>
-    <link href="{{ url('css/vistadash.css')}}" rel="stylesheet">
-</head>
 @extends('layouts.admin')
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="bold">Edición Roles BIP</h1>
+            <h1 class="bold">Edición Tipos BIP</h1>
         </div>
     </div>
 
@@ -33,15 +30,15 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('roles.update', $rol->i_pk_id) }}" method="POST" class="button-group">
+                    <form action="{{ route('TipoEquipo.update', $tipo->i_pk_id) }}" method="POST" class="button-group">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="vc_rol">Nombre del Rol</label>
-                            <input type="text" id="vc_rol" name="vc_rol" value="{{ $rol->vc_rol }}" class="form-control" required>
+                            <label for="vc_tipo">Tipo de Equipo</label>
+                            <input type="text" id="vc_tipo" name="vc_tipo" value="{{ $tipo->vc_tipo }}" class="form-control" required>
                         </div>
                         <button type="submit" class="btn">Actualizar</button>
-                        <a href="{{ route('Usuario.usuarios') }}" class="btn">Regresar a Usuarios</a>
+                        <a href="{{ route('TipoEquipo.index') }}" class="btn ">Regresar a Equipos</a>
                     </form>
                 </div>                
             </div>

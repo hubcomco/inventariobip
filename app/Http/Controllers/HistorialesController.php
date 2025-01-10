@@ -44,9 +44,12 @@ class HistorialesController extends Controller
     }
 
     public function edit(string $id)
-    {
+    {   
+        $empleados = Empleado::all(); 
+        $ubicaciones = Ubicacion::all(); 
+        $equipos = Equipo::all();  
         $historial = Historial::findOrFail($id);
-        return view('Historial.editHisto', compact('historial'));
+        return view('Historial.editHisto', compact('historial','equipos','empleados','ubicaciones'));
     }
 
     public function update(Request $request, string $id)

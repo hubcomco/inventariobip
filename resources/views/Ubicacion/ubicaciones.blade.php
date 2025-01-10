@@ -27,7 +27,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button id="btnVerUsuario" class="btn mb-4">Registrar Ubicación</button>
+            <button id="btnVerUsuario" class="btn mb-4">Abrir Formulario</button>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Ingresar la Ubicación</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Creación</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -120,7 +120,7 @@
             if ($('#verUbi').is(':visible')) { 
                 $('#btnVerUsuario').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerUsuario').text('Registrar Ubicación'); 
+                $('#btnVerUsuario').text('Abrir Formulario'); 
             } 
         });
     });

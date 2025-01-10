@@ -26,7 +26,7 @@
     <!-- Botón para desplegar el formulario --> 
     <div class="row"> 
         <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario de Registro</button>
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
         </div> 
     </div>
     
@@ -36,12 +36,96 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Creación empleado</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Creación</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('empleados.store')}}" method="POST" enctype="multipart/form-data">
-                        @include('Empleado.empleados')
+                    <form action="{{ route('empleados.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                         <!-- Nombres y Apellidos en una misma fila -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_nombre">Nombres</label>
+                                    <input value="{{ $empleado->vc_nombre ?? '' }}" id="vc_nombre" name="vc_nombre" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_apellido">Apellidos</label>
+                                    <input id="vc_apellido" value="{{ $empleado->vc_apellido ?? '' }}"  name="vc_apellido" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Emails en una sola fila -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_email">Email Corporativo</label>
+                                    <input id="vc_email" value="{{ $empleado->vc_email ?? '' }}"  name="vc_email" type="email" class="form-control" required>
+                                    <small id="emailError" class="text-danger" style="display:none;"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_email_personal">Email Personal</label>
+                                    <input id="vc_email_personal" value="{{ $empleado->vc_email_personal ?? '' }}"  name="vc_email_personal" type="email" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Telefonos en la misma fila -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_telefono">Teléfono</label>
+                                    <input id="vc_telefono" value="{{ $empleado->vc_telefono ?? '' }}"  name="vc_telefono" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_telefono_corporativo">Teléfono Corporativo</label>
+                                    <input id="vc_telefono_corporativo" value="{{ $empleado->vc_telefono_corporativo ?? '' }}"  name="vc_telefono_corporativo" type="number" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Usuario Directorio Activo en una fila -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_cargo">Cargo</label>
+                                    <input id="vc_cargo" value="{{ $empleado->vc_cargo ?? '' }}"  name="vc_cargo" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vc_usuario_DA">Usuario Directorio Activo</label>
+                                    <input id="vc_usuario_DA" value="{{ $empleado->vc_usuario_DA ?? '' }}"  name="vc_usuario_DA" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Contrato, Exámenes y Cédula en una fila de tres columnas -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="formFile">Contrato</label>
+                                    <input id="vc_url_contrato" name="vc_url_contrato" type="file" class="formFile">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="formFile">Exámenes</label>
+                                    <input id="vc_url_examenes" name="vc_url_examenes" type="file" class="formFile">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="formFile">Cédula</label>
+                                    <input id="vc_url_cedula" name="vc_url_cedula" type="file" class="formFile">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Botón de envío -->
+                        <button type="submit" class="btn mt-3" id="Btnactividad">Registrar Empleado</button>
                     </form>
                 </div>
             </div>
@@ -111,7 +195,7 @@
             if ($('#verContenedor').is(':visible')) { 
                 $('#btnVerContenido').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerContenido').text('Abrir Formulario de Registro'); 
+                $('#btnVerContenido').text('Abrir Formulario'); 
             } 
         });
         //Se activa el envento cada vez que se escribe en el campo email corporativo

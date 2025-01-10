@@ -5,18 +5,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="row1">
-        <div class="col-md-8">
-            <h1 class="bold">Gestión de Equipos BIP</h1>
-        </div>
-    </div>
-
-    <div class="row"> 
-        <div class="col-md-12"> 
-            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario de Registro</button>
-        </div> 
-    </div>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -33,12 +21,24 @@
         </div>
     @endif
 
+    <div class="row1">
+        <div class="col-md-8">
+            <h1 class="bold">Gestión de Equipos BIP</h1>
+        </div>
+    </div>
+
+    <div class="row"> 
+        <div class="col-md-12"> 
+            <button id="btnVerContenido" class="btn mb-4">Abrir Formulario</button>
+        </div> 
+    </div>
+
     <div class="row" id="verContenedor" style="display: none;">
         <div class="col-md-8">
             <div class="card shadow mb-4">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Creación de Equipo</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Creación</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -52,6 +52,16 @@
                                    type="text" 
                                    class="form-control" 
                                    required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="i_fk_id_tipo">Tipo de Equipo</label>
+                            <select id="i_fk_id_tipo" name="i_fk_id_tipo" class="form-control" required>
+                                <option value="">Seleccione un tipo</option>
+                                @foreach ($tipos as $tipo)
+                                    <option value="{{ $tipo->i_pk_id }}">{{ $tipo->vc_tipo }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -146,8 +156,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button type="submit" class="btn mt-3">Guardar Equipo</button>
+                        <button type="submit" class="btn mt-3">Registrar Equipo</button>
                     </form>
                 </div>
             </div>
@@ -155,7 +164,7 @@
     </div>
 
     <div class="panel mt-5">
-        <h3>Lista de Equipos</h3>
+        <h3 class="mt-5">Lista de Equipos</h3>
         <div class="table-responsive">
             <table id="equiposTabla" class="table tabla-inventario">
                 <thead>
@@ -164,6 +173,7 @@
                         <th>Nombre</th>
                         <th>Serial</th>
                         <th>Modelo</th>
+                        <th>Tipo de Equipo</th>
                         <th>Marca</th>
                         <th>Componentes Generales</th>
                         <th>Fecha Compra</th>
@@ -171,17 +181,18 @@
                         <th>Estado</th>
                         <th>Garantia</th>
                         <th>Editar</th>
-                        <th>Eliminar</the=>
+                        <th>Eliminar</th>
+                        <th>Asignar Equipo</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($equipos as $equipo)
                         <tr>
-                        
                             <td>{{ $equipo->i_pk_id }}</td>
                             <td>{{ $equipo->vc_nombre_equipo }}</td>
                             <td>{{ $equipo->vc_serial_equipo }}</td>
                             <td>{{ $equipo->vc_modelo }}</td>
+                            <td>{{ $equipo->tipoEquipo->vc_tipo ?? 'Sin asignar' }}</td>
                             <td>{{ $equipo->vc_marca }}</td>
                             <td>{{ $equipo->t_componentes_generales }}</td>
                             <td>{{ $equipo->d_fecha_compra }}</td>
@@ -195,9 +206,12 @@
                                 <form action="{{ route('equipos.destroy', $equipo->i_pk_id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-delete">Eliminar</button> 
+                                        <button type="submit" class="btn">Eliminar</button> 
                                 </form> 
                             </td>
+                            <td>
+                                <a href="{{ route('asignaciones.create', $equipo->i_pk_id) }}" class="btn">Asignar Equipo</a>
+                            </td>                           
                         </tr>
                     @endforeach
                 </tbody>
@@ -215,7 +229,7 @@
             if ($('#verContenedor').is(':visible')) { 
                 $('#btnVerContenido').text('Ocultar Formulario'); 
             } else { 
-                $('#btnVerContenido').text('Abrir Formulario de Registro'); 
+                $('#btnVerContenido').text('Abrir Formulario'); 
             } 
         });
     });

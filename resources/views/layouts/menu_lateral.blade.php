@@ -32,8 +32,8 @@
         </a>
         <div id="collapseEmpleados" class="collapse" aria-labelledby="headingEmpleados" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h class="collapse-header">Configuración:</h>
-                <a class="collapse-item" href="{{ route('dashboard') }}">Ver o Registrar</a>
+                <h class="collapse-header">Opciones</h>
+                <a class="collapse-item" href="{{ route('dashboard') }}">Ver / Registrar</a>
             </div>
         </div>
     </li>
@@ -46,9 +46,10 @@
         </a>
         <div id="collapseEquipos" class="collapse" aria-labelledby="headingEquipos" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h class="collapse-header">Opciones de Equipos:</h>
-                <a class="collapse-item" href="{{ route('equipos.index') }}">Registrar</a>
-                <a class="collapse-item" href="{{ route('TipoEquipo.index') }}">Tipología</a>
+                <h class="collapse-header">Opciones</h>
+                <a class="collapse-item" href="{{ route('equipos.index') }}">Registrar equipo</a>
+                <a class="collapse-item" href="{{ route('TipoEquipo.index') }}">Ver Clasificación</a>
+                <a class="collapse-item" href="{{ route('TipoEquipo.index') }}">Asignar Equipo</a>
             </div>
         </div>
     </li>
@@ -60,7 +61,8 @@
         </a>
         <div id="collapseUsuariosRoles" class="collapse" aria-labelledby="headingUsuariosRoles" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('Usuario.usuarios') }}">Configurar</a>
+                <h class="collapse-header">Opciones</h>
+                <a class="collapse-item" href="{{ route('Usuario.usuarios') }}">Administrar</a>
             </div>
         </div>
     </li>
@@ -82,7 +84,7 @@
         </a>
         <div id="collapseHistoriales" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Equipos de Bip:</h6>
+                <h6 class="collapse-header">Opciones</h6>
                 <a class="collapse-item" href="{{ route('Historial.historial') }}">Consultar</a>
             </div>
         </div>
@@ -96,7 +98,7 @@
         </a>
         <div id="collapsePaises" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Lugares de Operación BIP:</h6>
+                <h6 class="collapse-header">Lugares de Operación BIP</h6>
                 <a class="collapse-item" href="{{ route('Ubicacion.ubicaciones') }}">Consultar</a>
             </div>
         </div>

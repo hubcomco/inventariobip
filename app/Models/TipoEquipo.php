@@ -13,4 +13,9 @@ class TipoEquipo extends Model
     protected $fillable = [
         'vc_tipo',
     ];
+
+    public function equipos()
+    {
+        return $this->hasMany(Equipo::class, 'tipo_equipo_id', 'i_pk_id');
+    }
 }

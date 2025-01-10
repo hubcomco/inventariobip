@@ -39,6 +39,10 @@ tbody .btn:hover{
     transition: 0.8s;
 }
 
+#i_fk_id_equipo{
+    display: flex;
+}
+
 
 /*LOGO INVENTARIO BIP*/
 .sidebar-brand{

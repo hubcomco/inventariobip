@@ -17,7 +17,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="{{ route('equipos.update', $equipos->i_pk_id)}}" method="POST">
+                    <form action="{{ route('equipos.update', $equipo->i_pk_id)}}" method="POST">
                         @csrf
                         @method('PUT')
                         @include('equipo.equipos')

@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="bold">Empleados BIP</h1>
+            <h1 class="bold">Edición Empleados BIP</h1>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-around">
-                    <h6 class="m-0 font-weight-bold text-dark">Edición empleado</h6>
+                    <h6 class="m-0 font-weight-bold text-dark">Formulario de Edición</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

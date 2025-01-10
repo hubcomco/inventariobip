@@ -7,6 +7,7 @@ use App\Models\TipoEquipo;
 
 class TipoEquipoController extends Controller
 {
+
     public function index()
     {
         $tipos = TipoEquipo::all();
@@ -31,7 +32,7 @@ class TipoEquipoController extends Controller
     public function edit($id)
     {
         $tipo = TipoEquipo::findOrFail($id);
-        return view('TipoEquipo.edit', compact('tipo'));
+        return view('TipoEquipo.editTipo', compact('tipo'));
     }
 
     public function update(Request $request, $id)
